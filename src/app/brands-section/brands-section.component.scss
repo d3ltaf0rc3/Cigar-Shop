@@ -1,0 +1,87 @@
+$golden: #bba466;
+
+section {
+    background-color: #121414;
+    padding: 60px 310px;
+}
+
+article {
+    background-color: #050606;
+    width: 1260px;
+    margin: auto;
+    height: 596+180px;
+    padding: 90px 0;
+}
+
+.cigars {
+    position: absolute;
+    right: 0;
+    top: 1043px;
+}
+
+.heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 330px;
+    h1 {
+        color: $golden;
+        font-size: 40px;
+        font-family: "Open Sans", sans-serif;
+        line-height: 48px;
+        font-weight: 100;
+        margin-top: 50px;
+        margin-bottom: 20px;
+    }
+
+    a {
+        display: block;
+        background-color: #88743d;
+        color: #e8e6e3;
+        text-decoration: none;
+        font-family: "Open Sans", sans-serif;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        line-height: 34px;
+        text-align: left;
+        width: 240px;
+        height: 50px;
+        margin-top: 10px;
+    }
+    a:after {
+        float: right;
+        content: "";
+        width: 20px;
+        height: 30px;
+        margin-right: -10px;
+        display: inline-block;
+        background: url(https://kalimancaribe.com/design/themes/kalimancaribe/i/_spriteKC.png) center -261px no-repeat;
+    }
+}
+
+.brands-container {
+    padding: 60px 330px 40px 60px;
+    h2 {
+        color: $golden;
+        font-size: 30px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 100;
+        margin: 10px 0;
+    }
+}
+
+.images {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    border-right: 1px solid $golden;
+    width: 800px;
+}
+
+.images img {
+    width: 137px;
+    margin: 20px 0;
+    border: 1px solid #e8e6e3;
+    border-radius: 5px;
+}
