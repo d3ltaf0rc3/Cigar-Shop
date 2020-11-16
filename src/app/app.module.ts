@@ -9,6 +9,7 @@ import { LowerNavbarComponent } from './lower-navbar/lower-navbar.component';
 import { BrandsSectionComponent } from './brands-section/brands-section.component';
 import { HabanosAtHomeComponent } from './habanos-at-home/habanos-at-home.component';
 import { ContactsSectionComponent } from './contacts-section/contacts-section.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ContactsSectionComponent } from './contacts-section/contacts-section.co
     LowerNavbarComponent,
     BrandsSectionComponent,
     HabanosAtHomeComponent,
-    ContactsSectionComponent
+    ContactsSectionComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
