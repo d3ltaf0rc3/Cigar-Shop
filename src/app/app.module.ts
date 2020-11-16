@@ -7,6 +7,7 @@ import { HeaderComponent } from './header/header.component';
 import { HeroSectionComponent } from './hero-section/hero-section.component';
 import { LowerNavbarComponent } from './lower-navbar/lower-navbar.component';
 import { BrandsSectionComponent } from './brands-section/brands-section.component';
+import { HabanosAtHomeComponent } from './habanos-at-home/habanos-at-home.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { BrandsSectionComponent } from './brands-section/brands-section.componen
     HeaderComponent,
     HeroSectionComponent,
     LowerNavbarComponent,
-    BrandsSectionComponent
+    BrandsSectionComponent,
+    HabanosAtHomeComponent
   ],
   imports: [
     BrowserModule,
