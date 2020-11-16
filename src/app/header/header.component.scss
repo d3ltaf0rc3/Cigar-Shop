@@ -16,7 +16,6 @@ i {
 
 a {
     color: $light-grey;
-    text-decoration: none;
     font-size: 12px;
     font-family: Tahoma, Verdana, sans-serif;
 }
@@ -71,8 +70,10 @@ a:hover {
     }
     ul:nth-child(2) {
         li {
-            display: flex;
-            align-items: center;
+            a {
+                display: flex;
+                align-items: center;
+            }
             img {
                 margin-right: 10px;
             }
