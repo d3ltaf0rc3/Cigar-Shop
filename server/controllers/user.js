@@ -47,9 +47,7 @@ async function login(req, res) {
         .populate("wishlist");
 
     if (user === null) {
-        return res.status(401).send({
-            error: "Wrong username or password!"
-        });
+        return res.status(401).send("Wrong username or password!");
     }
 
     const status = await bcrypt.compare(password, user.password);
@@ -62,9 +60,7 @@ async function login(req, res) {
 
         return res.cookie("auth-token", token, cookieOptions).send(user);
     } else {
-        return res.status(401).send({
-            error: "Wrong username or password!"
-        });
+        return res.status(401).send("Wrong username or password!");
     }
 }
 
@@ -84,7 +80,7 @@ async function editUser(req, res) {
     const { userID } = decodeCookie(req.cookies["auth-token"]);
 
     try {
-        const user = await User.findByIdAndUpdate({ _id: userID }, req.body.data);
+        const user = await User.findByIdAndUpdate(userID, req.body, { new: true });
         return res.send(user);
     } catch (error) {
         return res.status(500).send({
