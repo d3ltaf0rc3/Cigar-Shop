@@ -11,6 +11,7 @@ import { HabanosAtHomeComponent } from './habanos-at-home/habanos-at-home.compon
 import { ContactsSectionComponent } from './contacts-section/contacts-section.component';
 import { FooterComponent } from './footer/footer.component';
 import { TitleHeroSectionComponent } from './title-hero-section/title-hero-section.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { TitleHeroSectionComponent } from './title-hero-section/title-hero-secti
     HabanosAtHomeComponent,
     ContactsSectionComponent,
     FooterComponent,
-    TitleHeroSectionComponent
+    TitleHeroSectionComponent,
+    LoginFormComponent
   ],
   imports: [
     BrowserModule,
