@@ -12,6 +12,7 @@ import { ContactsSectionComponent } from './contacts-section/contacts-section.co
 import { FooterComponent } from './footer/footer.component';
 import { TitleHeroSectionComponent } from './title-hero-section/title-hero-section.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { RegisterFormComponent } from './register-form/register-form.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { LoginFormComponent } from './login-form/login-form.component';
     ContactsSectionComponent,
     FooterComponent,
     TitleHeroSectionComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    RegisterFormComponent
   ],
   imports: [
     BrowserModule,
