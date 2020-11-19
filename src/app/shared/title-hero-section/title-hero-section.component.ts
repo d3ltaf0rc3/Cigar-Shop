@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-title-hero-section',
@@ -6,6 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./title-hero-section.component.scss']
 })
 export class TitleHeroSectionComponent {
-
+  @Input() title: string;
   constructor() { }
 }
