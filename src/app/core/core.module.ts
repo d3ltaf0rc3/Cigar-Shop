@@ -1,25 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrandsSectionComponent } from './brands-section/brands-section.component';
-import { ContactsSectionComponent } from './contacts-section/contacts-section.component';
-import { HabanosAtHomeComponent } from './habanos-at-home/habanos-at-home.component';
-import { HeroSectionComponent } from './hero-section/hero-section.component';
+import { RouterModule } from '@angular/router';
+
+import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
-    BrandsSectionComponent,
-    ContactsSectionComponent,
-    HabanosAtHomeComponent,
-    HeroSectionComponent
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
-    BrandsSectionComponent,
-    ContactsSectionComponent,
-    HabanosAtHomeComponent,
-    HeroSectionComponent
+    HeaderComponent,
+    FooterComponent
   ]
 })
 export class CoreModule { }
