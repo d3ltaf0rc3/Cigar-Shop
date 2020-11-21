@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 
-import { LoginFormComponent } from './login-form/login-form.component';
-import { RegisterFormComponent } from './register-form/register-form.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './authentication.service';
 
 @NgModule({
   declarations: [
-    LoginFormComponent,
-    RegisterFormComponent
+    LoginComponent,
+    RegisterComponent
   ],
   providers: [
     AuthenticationService
@@ -21,8 +21,8 @@ import { AuthenticationService } from './authentication.service';
     RouterModule
   ],
   exports: [
-    LoginFormComponent,
-    RegisterFormComponent
+    LoginComponent,
+    RegisterComponent
   ]
 })
 export class AuthenticationModule { }
