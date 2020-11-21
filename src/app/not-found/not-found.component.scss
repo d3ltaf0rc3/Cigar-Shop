@@ -1,0 +1,36 @@
+.container {
+    width: 30%;
+    margin: 50px auto;
+    text-align: center;
+}
+
+h1 {
+    font-size: 180px;
+    line-height: 240px;
+    color: #cfcbc5;
+}
+
+h2,
+p {
+    font-size: 30px;
+    line-height: 42px;
+    font-style: italic;
+}
+
+h2 {
+    color: #ff5a5a;
+}
+
+p {
+    color: #cfcbc5;
+}
+
+a {
+    color: #e8e6e3;
+    font-size: 17px;
+    line-height: 52px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
