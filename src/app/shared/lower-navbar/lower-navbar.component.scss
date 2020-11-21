@@ -36,3 +36,9 @@ a {
 .golden {
     background-color: #483e23;
 }
+
+@media screen and (max-width: 1800px) {
+    a {
+        font-size: 12px;
+    }
+}
