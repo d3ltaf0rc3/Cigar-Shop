@@ -13,6 +13,7 @@ import { BrandsSectionComponent } from './home/brands-section/brands-section.com
 import { ContactsSectionComponent } from './home/contacts-section/contacts-section.component';
 import { HabanosAtHomeComponent } from './home/habanos-at-home/habanos-at-home.component';
 import { HeroSectionComponent } from './home/hero-section/hero-section.component';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
@@ -22,14 +23,15 @@ import { HeroSectionComponent } from './home/hero-section/hero-section.component
     BrandsSectionComponent,
     ContactsSectionComponent,
     HabanosAtHomeComponent,
-    HeroSectionComponent
+    HeroSectionComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     AuthenticationModule,
     SharedModule,
-    CoreModule
+    CoreModule,
+    ProductsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

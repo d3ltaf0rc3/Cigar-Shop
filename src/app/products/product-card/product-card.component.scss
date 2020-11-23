@@ -1,0 +1,43 @@
+.container {
+    width: 331px;
+    &:hover {
+        box-shadow: rgba(122, 100, 62, 0.4) 0px 0px 8px 0px;
+    }
+}
+
+.image-container a {
+    padding: 0 15px;
+    img {
+        width: 90%;
+    }
+}
+
+.features {
+    background-color: #2e2a20;
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #d0ccc6;
+
+    i {
+        margin-right: 5px;
+        color: #6c624d;
+    }
+}
+
+.info {
+    text-align: center;
+    padding: 20px 0;
+
+    a {
+        color: #e8e6e3;
+    }
+    a:hover {
+        color: #bba466;
+    }
+    p {
+        margin-top: 10px;
+        color: #b89e71;
+    }
+}

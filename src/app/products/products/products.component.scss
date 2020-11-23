@@ -1,0 +1,9 @@
+.container {
+    padding: 20px 310px;
+}
+
+.products-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 150px;
+}
