@@ -1,0 +1,41 @@
+h1 {
+    font-size: 32px;
+    color: #d0ccc6;
+    line-height: 34px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15px;
+    padding-left: 15px;
+}
+
+a {
+    font-size: 14px;
+    color: #ccc7c0;
+    font-weight: bold;
+    margin: 7px 0;
+}
+
+a:hover {
+    color: #b89e71;
+}
+
+.active {
+    color: #b89e71;
+    position: relative;
+}
+
+.active::before {
+    width: 21px;
+    height: 2px;
+    content: "";
+    background: #b49b57;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 10px;
+    position: absolute;
+    top: 9px;
+    left: -28px;
+}

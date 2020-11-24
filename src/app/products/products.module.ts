@@ -6,9 +6,10 @@ import { ProductService } from './product.service';
 import { SharedModule } from '../shared/shared.module';
 import { ProductCardComponent } from './product-card/product-card.component';
 import { RouterModule } from '@angular/router';
+import { CategoriesComponent } from './categories/categories.component';
 
 @NgModule({
-  declarations: [ProductsComponent, ProductComponent, ProductCardComponent],
+  declarations: [ProductsComponent, ProductComponent, ProductCardComponent, CategoriesComponent],
   imports: [
     CommonModule,
     SharedModule,

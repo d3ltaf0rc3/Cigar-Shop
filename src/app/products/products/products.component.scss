@@ -1,9 +1,19 @@
+hr {
+    border: 1px solid #262A2B;
+}
+
 .container {
-    padding: 20px 310px;
+    padding: 50px 310px;
+}
+
+.inner-container {
+    padding: 50px 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .products-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 150px;
+    gap: 20px;
 }
