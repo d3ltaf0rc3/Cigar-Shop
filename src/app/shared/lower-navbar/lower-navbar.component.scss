@@ -18,7 +18,6 @@ li {
     height: 100%;
     width: 213.55px;
     text-align: center;
-    padding: 15px 0;
     cursor: pointer;
 }
 
@@ -31,10 +30,23 @@ a {
     font-size: 15px;
     line-height: 30px;
     font-weight: 800;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 15px 0;
 }
 
 .golden {
     background-color: #483e23;
+}
+
+.active {
+    color: #b89e71;
+}
+
+.active-special {
+    color: #b89e71;
+    background-color: #000000;
 }
 
 @media screen and (max-width: 1800px) {
