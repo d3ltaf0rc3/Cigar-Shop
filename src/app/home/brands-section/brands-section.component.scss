@@ -3,6 +3,8 @@ $golden: #bba466;
 section {
     background-color: #121414;
     padding: 60px 310px;
+    position: relative;
+    overflow-x: hidden;
 }
 
 article {
@@ -15,8 +17,8 @@ article {
 
 .cigars {
     position: absolute;
-    right: 0;
-    top: 990px;
+    right: -70px;
+    bottom: 0;
 }
 
 .heading {
