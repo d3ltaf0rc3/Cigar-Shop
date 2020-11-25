@@ -16,13 +16,11 @@ article:first-child {
 }
 
 img {
-    height: 500px;
     width: 100%;
     opacity: 0.5;
 }
 
 .contacts {
-    height: 500px;
     width: 38.75%;
     background-color: #82703e;
     padding: 50px 65px;
@@ -37,12 +35,18 @@ img {
     }
     a {
         color: #e8e6e3;
-    }
-    a:hover {
-        text-decoration: underline;
+        &:hover {
+            text-decoration: underline;
+        }
     }
     a,p {
         white-space: pre-line;
         margin: 25px 0;
+    }
+}
+
+@media screen and (max-width: 1800px) {
+    .contacts {
+        padding: 50px 46px;;
     }
 }

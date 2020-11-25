@@ -82,3 +82,13 @@ article {
     border: 1px solid #e8e6e3;
     border-radius: 5px;
 }
+
+@media screen and (max-width: 1750px) {
+    section {
+        padding: 60px 220px;
+    }
+
+    .cigars {
+        width: 35%;
+    }
+}

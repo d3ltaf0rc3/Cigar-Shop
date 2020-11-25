@@ -4,10 +4,12 @@ section {
     align-items: center;
 }
 
-img:first-child {
+section > img {
     width: 50%;
 }
 
-img:nth-child(2) {
-    margin: 0 150px;
+div {
+    width: 50%;
+    display: grid;
+    place-items: center;
 }

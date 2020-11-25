@@ -12,7 +12,12 @@ hr {
     justify-content: space-between;
 }
 
+.categories {
+    max-width: 20%;
+}
+
 .products-container {
+    max-width: 80%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 20px;

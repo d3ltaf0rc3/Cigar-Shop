@@ -1,5 +1,5 @@
 .container {
-    width: 331px;
+    width: 100%;
     &:hover {
         box-shadow: rgba(122, 100, 62, 0.4) 0px 0px 8px 0px;
     }
@@ -32,9 +32,9 @@
 
     a {
         color: #e8e6e3;
-    }
-    a:hover {
-        color: #bba466;
+        &:hover {
+            color: #bba466;
+        }
     }
     p {
         margin-top: 10px;

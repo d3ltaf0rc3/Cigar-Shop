@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
+import { ProductsModule } from './products/products.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -13,7 +14,6 @@ import { BrandsSectionComponent } from './home/brands-section/brands-section.com
 import { ContactsSectionComponent } from './home/contacts-section/contacts-section.component';
 import { HabanosAtHomeComponent } from './home/habanos-at-home/habanos-at-home.component';
 import { HeroSectionComponent } from './home/hero-section/hero-section.component';
-import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [

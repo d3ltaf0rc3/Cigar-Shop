@@ -20,7 +20,18 @@ hr {
     padding: 17.5px 0;
     display: flex;
     justify-content: space-evenly;
+}
+
+.features {
+    background-color: #2e2a20;
+    padding: 12.5px 150px;
     font-size: 14px;
+}
+
+.package {
+    background-color: #554c34;
+    padding: 12.5px 380px;
+    font-size: 16px;
 }
 
 span {
@@ -34,17 +45,6 @@ i {
     color: #6c624d;
 }
 
-.features {
-    background-color: #2e2a20;
-    padding: 12.5px 150px;
-}
-
-.package {
-    background-color: #554c34;
-    padding: 12.5px 380px;
-    font-size: 16px;
-}
-
 .product-info p {
     padding: 27px 0;
     color: #e8e6e3;
@@ -53,10 +53,9 @@ i {
 
 a {
     color: #b89e71;
-}
-
-a:hover {
-    text-decoration: underline;
+    &:hover {
+        text-decoration: underline;
+    }
 }
 
 .description {
