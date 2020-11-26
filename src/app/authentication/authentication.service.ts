@@ -22,6 +22,6 @@ export class AuthenticationService {
   }
 
   logout(): Observable<any> {
-    return this.http.get(`${environment.apiURL}\logout`);
+    return this.http.get(`${environment.apiURL}/logout`);
   }
 }
