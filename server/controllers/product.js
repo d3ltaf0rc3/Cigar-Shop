@@ -23,7 +23,17 @@ async function getProduct(req, res) {
     }
 }
 
+async function getProducts(req, res) {
+    try {
+        const products = await Product.find({});
+        res.send(products);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
     createProduct,
-    getProduct
+    getProduct,
+    getProducts
 };
