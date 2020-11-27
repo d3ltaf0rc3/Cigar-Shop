@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { ProductService } from '../product.service';
 
@@ -7,13 +8,26 @@ import { ProductService } from '../product.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, DoCheck {
   products: IProduct[];
-  constructor(private productService: ProductService) { }
+  title: string;
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.productService.getAllProducts().subscribe(products => {
       this.products = products;
+    });
+  }
+
+  ngDoCheck(): void {
+    this.route.queryParams.subscribe(params => {
+      switch (params.type) {
+        case 'habanos': this.title = 'HABANOS ПУРИ'; break;
+        case 'others': this.title = 'ДРУГИ ПУРИ'; break;
+        case 'accessories': this.title = 'АКСЕСОАРИ'; break;
+        case 'gourmet': this.title = 'ГУРМЕ'; break;
+        case 'special': this.title = 'СПЕЦИАЛНИ ОФЕРТИ'; break;
+      }
     });
   }
 }
