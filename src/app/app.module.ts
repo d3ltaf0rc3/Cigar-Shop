@@ -6,6 +6,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { ProductsModule } from './products/products.module';
+import { UserModule } from './user/user.module';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -31,9 +32,9 @@ import { HeroSectionComponent } from './home/hero-section/hero-section.component
     AuthenticationModule,
     SharedModule,
     CoreModule,
-    ProductsModule
+    ProductsModule,
+    UserModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
