@@ -16,7 +16,7 @@ async function getProduct(req, res) {
     const productId = req.params.id;
 
     try {
-        const product = await Product.findOne({ _id: productId })
+        const product = await Product.findOne({ _id: productId });
         return res.send(product);
     } catch (error) {
         return res.status(500).send(error.message);
