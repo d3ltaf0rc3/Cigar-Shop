@@ -3,10 +3,10 @@
 <section>
     <h1>ЛОГИН</h1>
     <hr>
-    <form>
-        <input type="text" placeholder="Потребителско име">
-        <input type="text" placeholder="Парола">
-        <button>ВЛЕЗ</button>
+    <form #f="ngForm" (ngSubmit)="loginHandler(f.value)">
+        <input #username="ngModel" name="username" type="text" placeholder="Потребителско име" ngModel required>
+        <input #password="ngModel" name="password" type="password" placeholder="Парола" ngModel required>
+        <button [disabled]="f.invalid">ВЛЕЗ</button>
     </form>
     <span>Нямате регистриран профил? <a routerLink="/register">Регистрирайте се от тук.</a></span>
 </section>

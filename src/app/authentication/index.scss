@@ -61,6 +61,11 @@ button {
     cursor: pointer;
 }
 
+button:disabled {
+    background-color: #a1a1a171;
+    cursor: default;
+}
+
 span {
     padding: 20px 0 0;
     color: $white;

@@ -8,4 +8,7 @@ import { Component } from '@angular/core';
 export class RegisterComponent {
 
   constructor() { }
+
+  registerHandler(value: object): void {
+  }
 }

@@ -3,11 +3,11 @@
 <section>
     <h1>РЕГИСТРАЦИЯ</h1>
     <hr>
-    <form>
-        <input type="text" placeholder="Потребителско име">
-        <input type="text" placeholder="Парола">
-        <input type="text" placeholder="Повторете паролата">
-        <button>РЕГИСТРИРАЙ СЕ</button>
+    <form #f="ngForm" (ngSubmit)="registerHandler(f.value)">
+        <input name="username" type="text" placeholder="Потребителско име" ngModel required>
+        <input name="password" type="password" placeholder="Парола" ngModel required>
+        <input name="repeatPassword" type="password" placeholder="Повторете паролата" ngModel required>
+        <button [disabled]="f.invalid">РЕГИСТРИРАЙ СЕ</button>
     </form>
     <span>Вече имате съществуващ профил? <a routerLink="/login">Влезте с него.</a></span>
 </section>
