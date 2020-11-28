@@ -2,33 +2,36 @@
 <app-lower-navbar></app-lower-navbar>
 <div class="container">
     <hr>
-    <div class="product-info">
-        <img [src]="product?.imageUrl" alt="cigar">
-        <div class="features">
-            <span><i class="fas fa-tag"></i>{{product?.brand}}</span>
-            <span><i class="fas fa-ruler"></i>{{product?.vitola}}</span>
-            <span><i class="fas fa-arrows-alt-h"></i>{{product?.length}} мм</span>
-            <span><i class="fas fa-ring"></i>{{product?.ring}} ринг</span>
-            <span><i class="fas fa-leaf"></i>{{product?.strength}}</span>
-            <span><i class="far fa-clock"></i>{{product?.time}} мин.</span>
+    <app-loader *ngIf="!product; else elseContainer"></app-loader>
+    <ng-container #elseContainer>
+        <div class="product-info">
+            <img [src]="product?.imageUrl" alt="cigar">
+            <div class="features">
+                <span><i class="fas fa-tag"></i>{{product?.brand}}</span>
+                <span><i class="fas fa-ruler"></i>{{product?.vitola}}</span>
+                <span><i class="fas fa-arrows-alt-h"></i>{{product?.length}} мм</span>
+                <span><i class="fas fa-ring"></i>{{product?.ring}} ринг</span>
+                <span><i class="fas fa-leaf"></i>{{product?.strength}}</span>
+                <span><i class="far fa-clock"></i>{{product?.time}} мин.</span>
+            </div>
+            <div class="package">
+                <span>Пури в опаковка:</span>
+                <span>1 брой - {{product?.price.toFixed(2)}} лв</span>
+                <span>10 броя - {{(product?.price * 10).toFixed(2)}} лв</span>
+            </div>
+            <p>За консултация можете да се свържете с продуктовите специалисти от La Casa del Habano и Premium Cigars &
+                Tobacco на тел.: +359 2 953 11 80, +359 889 300 091, и <a
+                    href="mailto:contact@kaliman.bg">contact@kaliman.bg</a>.</p>
         </div>
-        <div class="package">
-            <span>Пури в опаковка:</span>
-            <span>1 брой - {{product?.price.toFixed(2)}} лв</span>
-            <span>10 броя - {{(product?.price * 10).toFixed(2)}} лв</span>
+        <hr>
+        <div class="description">
+            <h6>ОПИСАНИЕ</h6>
+            <p>{{product?.description}}</p>
         </div>
-        <p>За консултация можете да се свържете с продуктовите специалисти от La Casa del Habano и Premium Cigars &
-            Tobacco на тел.: +359 2 953 11 80, +359 889 300 091, и <a
-                href="mailto:contact@kaliman.bg">contact@kaliman.bg</a>.</p>
-    </div>
-    <hr>
-    <div class="description">
-        <h6>ОПИСАНИЕ</h6>
-        <p>{{product?.description}}</p>
-    </div>
-    <div class="images">
-        <img src="../../../assets/images/homepage_contacts_left.jpg" alt="left">
-        <img src="https://kalimancaribe.com/images/companies/1/product%20inner/product_inner_bottom_right.png"
-            alt="right">
-    </div>
+        <div class="images">
+            <img src="../../../assets/images/homepage_contacts_left.jpg" alt="left">
+            <img src="https://kalimancaribe.com/images/companies/1/product%20inner/product_inner_bottom_right.png"
+                alt="right">
+        </div>
+    </ng-container>
 </div>

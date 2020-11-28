@@ -8,6 +8,7 @@
         </div>
         <div class="products-container">
             <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+            <app-loader *ngIf="!products"></app-loader>
         </div>
     </div>
 </div>
