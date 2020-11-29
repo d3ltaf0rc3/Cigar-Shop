@@ -1,1 +1,28 @@
-<p>profile works!</p>
+<app-title-hero-section title="ПРОФИЛ"></app-title-hero-section>
+<app-lower-navbar></app-lower-navbar>
+<div class="container">
+    <hr>
+    <div class="inner-container">
+        <div class="heading">
+            <img src="https://st3.depositphotos.com/4111759/13425/v/380/depositphotos_134255626-stock-illustration-avatar-male-profile-gray-person.jpg" alt="avatar">
+            <h1>admin</h1>
+        </div>
+        <div class="details">
+            <div class="form-container">
+                <h1>ПРОМЯНА НА ПАРОЛА</h1>
+                <hr>
+                <form #f="ngForm" (ngSubmit)="changePasswordHandler(f.value)">
+                    <input name="currentPassword" type="password" placeholder="Текуща парола" ngModel required>
+                    <input name="newPassword" type="password" placeholder="Нова парола" ngModel required>
+                    <input name="repeatNewPassword" type="password" placeholder="Повторете новата парола" ngModel required>
+                    <button [disabled]="f.invalid">Промяна на парола</button>
+                </form>
+            </div>
+            <div class="btns">
+                <button>Изтриване на профила</button>
+                <a routerLink="/cart">Количка</a>
+                <a routerLink="/wishlist">Списък с желания</a>
+            </div>
+        </div>
+    </div>
+</div>

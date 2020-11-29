@@ -9,7 +9,6 @@ import { ProductComponent } from './products/product/product.component';
 import { ProductsComponent } from './products/products/products.component';
 import { CartComponent } from './user/cart/cart.component';
 import { ProfileComponent } from './user/profile/profile.component';
-import { SettingsComponent } from './user/settings/settings.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 
 const routes: Routes = [
@@ -19,7 +18,6 @@ const routes: Routes = [
   { path: 'cigars', component: ProductsComponent },
   { path: 'product/:id', component: ProductComponent },
   { path: 'profile', component: ProfileComponent },
-  { path: 'settings', component: SettingsComponent },
   { path: 'wishlist', component: WishlistComponent },
   { path: 'cart', component: CartComponent },
   { path: '**', component: NotFoundComponent }

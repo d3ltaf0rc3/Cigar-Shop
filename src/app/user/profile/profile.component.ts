@@ -12,4 +12,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  changePasswordHandler(value: object): void {
+    // TODO: implement change password functionality
+  }
 }

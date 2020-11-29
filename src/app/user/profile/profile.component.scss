@@ -1,0 +1,113 @@
+$gold: #bba466;
+$white: #e8e6e3;
+
+.container {
+    padding: 50px 310px;
+}
+
+.container > hr {
+    border: 1px solid #262a2b;
+}
+
+.inner-container {
+    padding: 50px 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+}
+
+.heading {
+    img {
+        object-fit: cover;
+        width: 300px;
+        border: 2px solid $gold;
+        border-radius: 5px;
+    }
+    h1 {
+        color: $white;
+        font-size: 24px;
+        margin-top: 10px;
+    }
+}
+
+.details {
+    width: 45%;
+}
+
+.form-container {
+    hr {
+        border-color: $gold;
+        margin: 20px 0 30px;
+    }
+    h1 {
+        font-size: 38px;
+        font-weight: 100;
+        color: $gold;
+    }
+    margin-bottom: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    outline: 0;
+    background-color: rgb(24, 26, 27);
+    border-bottom-color: rgb(120, 90, 41);
+    color: $white;
+    font-weight: 600;
+    padding: 10px 5px;
+    margin: 10px 0;
+}
+
+input::placeholder {
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+button {
+    margin-top: 30px;
+    background-color: rgb(136, 116, 61);
+    color: $white;
+    outline: 0;
+    border: 0;
+    padding: 10px 0;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #a1a1a171;
+    cursor: default;
+}
+
+.btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    button, a {
+        font-size: 13px;
+        padding: 10px 20px;
+        border-radius: 2px;
+    }
+
+    button {
+        margin-top: 0;
+        background-color: #ff3636;
+    }
+
+    a {
+        background-color: $gold;
+        color: $white;
+        font-weight: 600;
+    }
+}

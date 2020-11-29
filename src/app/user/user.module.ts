@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { ProfileComponent } from './profile/profile.component';
-import { SettingsComponent } from './settings/settings.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
 
@@ -11,19 +13,20 @@ import { UserService } from './user.service';
 @NgModule({
   declarations: [
     ProfileComponent,
-    SettingsComponent,
     WishlistComponent,
     CartComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    SharedModule,
+    RouterModule,
+    FormsModule
   ],
   providers: [
     UserService
   ],
   exports: [
     ProfileComponent,
-    SettingsComponent,
     WishlistComponent,
     CartComponent
   ]
