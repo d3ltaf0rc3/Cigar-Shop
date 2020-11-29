@@ -3,7 +3,7 @@
 <div class="container">
     <hr>
     <app-loader *ngIf="!product; else elseContainer"></app-loader>
-    <ng-container #elseContainer>
+    <ng-template #elseContainer>
         <div class="product-info">
             <img [src]="product?.imageUrl" alt="cigar">
             <div class="features">
@@ -33,5 +33,5 @@
             <img src="https://kalimancaribe.com/images/companies/1/product%20inner/product_inner_bottom_right.png"
                 alt="right">
         </div>
-    </ng-container>
+    </ng-template>
 </div>
