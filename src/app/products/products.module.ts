@@ -29,7 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   exports: [
     ProductComponent,
-    ProductsComponent
+    ProductsComponent,
+    ProductCardComponent
   ]
 })
 export class ProductsModule { }

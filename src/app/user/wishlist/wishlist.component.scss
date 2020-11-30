@@ -1,0 +1,41 @@
+.container {
+    padding: 50px 310px;
+}
+
+.container > hr {
+    border: 1px solid #262a2b;
+}
+
+.inner-container {
+    padding: 70px 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 50px;
+}
+
+.notification {
+    padding: 20px 100px;
+    border: 2px solid #bba466;
+    color: #bba466;
+    font-size: 22px;
+    border-radius: 15px;
+}
+
+button, a {
+    background-color: #2e2a20;
+    border: none;
+    outline: none;
+    font-size: 13px;
+    color: #ccc7c0;
+    padding: 9px 15px;
+}
+
+button {
+    margin-right: 15px;
+}

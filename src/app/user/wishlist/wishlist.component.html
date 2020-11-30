@@ -1,1 +1,17 @@
-<p>wishlist works!</p>
+<app-title-hero-section title="СПИСЪК С ЖЕЛАНИЯ"></app-title-hero-section>
+<app-lower-navbar></app-lower-navbar>
+<div class="container">
+    <hr>
+    <div class="inner-container">
+        <div class="product-container" *ngIf="wishlistItems?.length">
+            <app-product-card *ngFor="let product of wishlistItems" [product]="product"></app-product-card>
+        </div>
+        <div class="notification" *ngIf="!wishlistItems?.length">
+            Няма продукти за показване!
+        </div>
+    </div>
+    <div class="btns">
+        <button [disabled]="!wishlistItems?.length">ИЗЧИСТИ СПИСЪКА С ЖЕЛАНИЯ</button>
+        <a routerLink="/profile">КЪМ ПРОФИЛА</a>
+    </div>
+</div>

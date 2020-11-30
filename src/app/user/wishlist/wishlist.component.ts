@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/user/user.service';
+import { IProduct } from 'src/app/shared/interfaces/product';
 
 @Component({
   selector: 'app-wishlist',
@@ -6,10 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./wishlist.component.scss']
 })
 export class WishlistComponent implements OnInit {
-
-  constructor() { }
+  wishlistItems: IProduct[];
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
-
 }
