@@ -1,1 +1,18 @@
-<p>cart works!</p>
+<app-title-hero-section title="КОЛИЧКА"></app-title-hero-section>
+<app-lower-navbar></app-lower-navbar>
+<div class="container">
+    <hr>
+    <div class="inner-container">
+        <div class="product-container" *ngIf="cartItems?.length; else elseTemplate">
+            <app-product-card *ngFor="let product of cartItems" [product]="product"></app-product-card>
+        </div>
+        <div class="btns" *ngIf="cartItems?.length">
+            <button [disabled]="!cartItems?.length">ПОРЪЧАЙ</button>
+        </div>
+        <ng-template #elseTemplate>
+            <div class="notification">
+                Няма продукти за показване!
+            </div>
+        </ng-template>
+    </div>
+</div>
