@@ -6,8 +6,11 @@
         <div class="product-container" *ngIf="cartItems?.length; else elseTemplate">
             <app-product-card *ngFor="let product of cartItems" [product]="product"></app-product-card>
         </div>
-        <div class="btns" *ngIf="cartItems?.length">
-            <button [disabled]="!cartItems?.length">ПОРЪЧАЙ</button>
+        <div class="buy-container" *ngIf="cartItems?.length">
+            <p class="price">{{totalPrice.toFixed(2)}} лв</p>
+            <div class="btn-container">
+                <button [disabled]="!cartItems?.length">ПОРЪЧАЙ</button>
+            </div>
         </div>
         <ng-template #elseTemplate>
             <div class="notification">

@@ -9,22 +9,33 @@
 .inner-container {
     padding: 70px 20px;
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: space-around;
 }
 
 .product-container {
+    width: 75%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
 }
 
-.notification {
-    padding: 20px 100px;
+.buy-container {
+    width: 20%;
+    height: 215px;
     border: 2px solid #bba466;
-    color: #bba466;
-    font-size: 22px;
     border-radius: 15px;
+}
+
+.btn-container, .price {
+    padding: 30px 15px;
+}
+
+.price {
+    color: #e8e6e3;
+    font-size: 32px;
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 2px solid #bba466;
 }
 
 button {
@@ -33,5 +44,15 @@ button {
     outline: none;
     font-size: 13px;
     color: #ccc7c0;
-    padding: 9px 15px;
+    padding: 14px 15px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.notification {
+    padding: 20px 100px;
+    border: 2px solid #bba466;
+    color: #bba466;
+    font-size: 22px;
+    border-radius: 15px;
 }
