@@ -15,6 +15,7 @@ import { BrandsSectionComponent } from './home/brands-section/brands-section.com
 import { ContactsSectionComponent } from './home/contacts-section/contacts-section.component';
 import { HabanosAtHomeComponent } from './home/habanos-at-home/habanos-at-home.component';
 import { HeroSectionComponent } from './home/hero-section/hero-section.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { HeroSectionComponent } from './home/hero-section/hero-section.component
     ContactsSectionComponent,
     HabanosAtHomeComponent,
     HeroSectionComponent,
+    AboutUsComponent,
   ],
   imports: [
     BrowserModule,
