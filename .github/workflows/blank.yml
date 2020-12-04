@@ -23,6 +23,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Angular Github Actions
-        uses: mayurrawte/github-angular-actions@latest
