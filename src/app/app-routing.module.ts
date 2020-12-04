@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AboutUsComponent } from './about-us/about-us.component';
 
 import { LoginComponent } from './authentication/login/login.component';
 import { RegisterComponent } from './authentication/register/register.component';
+import { BrandsComponent } from './brands/brands.component';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductComponent } from './products/product/product.component';
@@ -11,6 +11,7 @@ import { ProductsComponent } from './products/products/products.component';
 import { CartComponent } from './user/cart/cart.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'wishlist', component: WishlistComponent },
   { path: 'cart', component: CartComponent },
   { path: 'about-us', component: AboutUsComponent },
+  { path: 'brands', component: BrandsComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
