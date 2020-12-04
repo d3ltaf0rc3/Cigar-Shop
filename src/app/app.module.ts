@@ -17,6 +17,7 @@ import { HabanosAtHomeComponent } from './home/habanos-at-home/habanos-at-home.c
 import { HeroSectionComponent } from './home/hero-section/hero-section.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { BrandsComponent } from './brands/brands.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { BrandsComponent } from './brands/brands.component';
     HeroSectionComponent,
     AboutUsComponent,
     BrandsComponent,
+    ContactsComponent,
   ],
   imports: [
     BrowserModule,

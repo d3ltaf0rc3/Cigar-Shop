@@ -12,6 +12,7 @@ import { CartComponent } from './user/cart/cart.component';
 import { ProfileComponent } from './user/profile/profile.component';
 import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactsComponent } from './contacts/contacts.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'cart', component: CartComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'brands', component: BrandsComponent },
+  { path: 'contacts', component: ContactsComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
