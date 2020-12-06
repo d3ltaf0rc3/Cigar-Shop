@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'brands', component: BrandsComponent },
   { path: 'contacts', component: ContactsComponent },
+  { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
   { path: '**', component: NotFoundComponent }
 ];
 
