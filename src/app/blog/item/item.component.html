@@ -1,1 +1,6 @@
-<p>item works!</p>
+<div class="container">
+    <a [routerLink]="['/blog/details', post._id]">
+        <img class="bob-on-hover" [src]="post.imageUrl" alt="blog image">
+        <h1>{{post.title}}</h1>
+    </a>
+</div>

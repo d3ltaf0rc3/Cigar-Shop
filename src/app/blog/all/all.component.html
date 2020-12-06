@@ -1,1 +1,8 @@
-<p>all works!</p>
+<app-title-hero-section title="БЛОГ"></app-title-hero-section>
+<app-lower-navbar></app-lower-navbar>
+<div class="container">
+    <hr>
+    <div class="grid-container">
+        <app-item *ngFor="let post of posts" [post]="post"></app-item>
+    </div>
+</div>

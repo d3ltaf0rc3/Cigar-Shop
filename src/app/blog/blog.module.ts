@@ -4,12 +4,22 @@ import { AllComponent } from './all/all.component';
 import { DetailsComponent } from './details/details.component';
 import { ItemComponent } from './item/item.component';
 import { BlogRoutingModule } from './blog-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
+import { BlogService } from './blog.service';
 
 @NgModule({
   declarations: [AllComponent, DetailsComponent, ItemComponent],
+  providers: [
+    BlogService
+  ],
   imports: [
     CommonModule,
-    BlogRoutingModule
+    HttpClientModule,
+    BlogRoutingModule,
+    RouterModule,
+    SharedModule
   ]
 })
 export class BlogModule { }

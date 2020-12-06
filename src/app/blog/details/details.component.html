@@ -1,1 +1,13 @@
-<p>details works!</p>
+<app-title-hero-section title="БЛОГ"></app-title-hero-section>
+<app-lower-navbar></app-lower-navbar>
+<div class="container">
+    <hr>
+    <div class="inner-container">
+        <app-loader *ngIf="!post; else elseContainer"></app-loader>
+        <ng-template #elseContainer>
+            <img [src]="post.imageUrl" alt="post image">
+            <h1>{{post.title}}</h1>
+            <p>{{post.content}}</p>
+        </ng-template>
+    </div>
+</div>
