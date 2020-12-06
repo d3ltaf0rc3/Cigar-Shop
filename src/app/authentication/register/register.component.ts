@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from '../authentication.service';
 
 @Component({
   selector: 'app-register',
@@ -6,9 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['../index.scss']
 })
 export class RegisterComponent {
-
-  constructor() { }
+  constructor(private authService: AuthenticationService) { }
 
   registerHandler(value: object): void {
+    this.authService.register(value).subscribe(resp => console.log(resp));
   }
 }

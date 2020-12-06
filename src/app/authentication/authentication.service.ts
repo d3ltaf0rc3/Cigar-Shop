@@ -8,16 +8,17 @@ export class AuthenticationService {
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
-    })
+    }),
+    withCredentials: true
   };
 
   constructor(private http: HttpClient) { }
 
-  login(data: {username: string, password: string}): Observable<any> {
+  login(data: object): Observable<any> {
     return this.http.post(`${environment.apiURL}/login`, data, this.httpOptions);
   }
 
-  register(data: {username: string, password: string, repeatPassword: string}): Observable<any> {
+  register(data: object): Observable<any> {
     return this.http.post(`${environment.apiURL}/register`, data, this.httpOptions);
   }
 
