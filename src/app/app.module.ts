@@ -18,6 +18,7 @@ import { HeroSectionComponent } from './home/hero-section/hero-section.component
 import { AboutUsComponent } from './about-us/about-us.component';
 import { BrandsComponent } from './brands/brands.component';
 import { ContactsComponent } from './contacts/contacts.component';
+import { NewsletterComponent } from './newsletter/newsletter.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { ContactsComponent } from './contacts/contacts.component';
     AboutUsComponent,
     BrandsComponent,
     ContactsComponent,
+    NewsletterComponent,
   ],
   imports: [
     BrowserModule,

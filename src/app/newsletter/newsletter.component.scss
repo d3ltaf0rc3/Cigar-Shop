@@ -1,0 +1,41 @@
+.container {
+    padding: 50px 450px;
+    color: #e8e6e3;
+}
+
+.container > hr {
+    border: 1px solid #262a2b;
+    margin-bottom: 50px;
+}
+
+.inner-container {
+    padding: 0 80px;
+}
+
+.newsletter {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0;
+}
+
+h1, h2 {
+    color: #d0ccc6;
+    line-height: 28px;
+}
+
+h1 {
+    font-size: 24px;
+}
+
+h2 {
+    font-size: 22px;
+}
+
+a {
+    font-size: 14px;
+    color: #bba466;
+    margin-top: 5px;
+    &:hover {
+        text-decoration: underline;
+    }
+}
