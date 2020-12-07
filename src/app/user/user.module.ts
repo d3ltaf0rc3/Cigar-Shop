@@ -10,6 +10,7 @@ import { WishlistComponent } from './wishlist/wishlist.component';
 import { CartComponent } from './cart/cart.component';
 
 import { UserService } from './user.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { UserService } from './user.service';
   ],
   imports: [
     CommonModule,
+    HttpClientModule,
     SharedModule,
     RouterModule,
     FormsModule,

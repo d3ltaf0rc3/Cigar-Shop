@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IProduct } from 'src/app/shared/interfaces/product';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-cart',
@@ -8,10 +9,13 @@ import { IProduct } from 'src/app/shared/interfaces/product';
 })
 export class CartComponent implements OnInit {
   cartItems: IProduct[];
-  totalPrice = 1500;
-  constructor() { }
+  totalPrice = 0;
+  constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    // TODO: get products from DB
+    this.userService.getCart().subscribe(cart => {
+      this.cartItems = cart;
+      cart.forEach(item => this.totalPrice += item.price);
+    });
   }
 }
