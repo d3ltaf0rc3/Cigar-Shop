@@ -75,9 +75,42 @@ async function editUser(req, res) {
     }
 }
 
+async function getCart(req, res) {
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findById(userID).select("-password").populate("cart");
+        return res.send(user.cart);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+async function getWishlist(req, res) {
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findById(userID).select("-password").populate("wishlist");
+        return res.send(user.wishlist);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+async function getProfile(req, res) {
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findById(userID).select("-password");
+        return res.send(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
     register,
     login,
     logout,
-    editUser
+    editUser,
+    getCart,
+    getWishlist,
+    getProfile
 };
