@@ -14,12 +14,6 @@ export class ProductsComponent implements OnInit, DoCheck {
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.productService.getAllProducts().subscribe(products => {
-      this.products = products;
-    });
-  }
-
-  ngDoCheck(): void {
     this.route.queryParams.subscribe(params => {
       switch (params.type) {
         case 'habanos': this.title = 'HABANOS ПУРИ'; break;
@@ -28,6 +22,9 @@ export class ProductsComponent implements OnInit, DoCheck {
         case 'gourmet': this.title = 'ГУРМЕ'; break;
         case 'special': this.title = 'СПЕЦИАЛНИ ОФЕРТИ'; break;
       }
+      this.productService.getAllProducts(params.type).subscribe(products => {
+        this.products = products;
+      });
     });
   }
 }

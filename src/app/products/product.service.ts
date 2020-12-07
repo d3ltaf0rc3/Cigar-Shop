@@ -8,8 +8,8 @@ import { IProduct } from '../shared/interfaces/product';
 export class ProductService {
   constructor(private http: HttpClient) { }
 
-  getAllProducts(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`${environment.apiURL}/product/get-all`);
+  getAllProducts(type: string): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`${environment.apiURL}/product/get-all/${type}`);
   }
 
   getProduct(id: string): Observable<IProduct> {
