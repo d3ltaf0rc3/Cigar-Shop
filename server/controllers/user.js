@@ -64,14 +64,29 @@ async function logout(req, res) {
     return res.clearCookie("auth-token", cookieOptions).send("Logout is successful!");
 }
 
-async function editUser(req, res) {
-    const { userID } = decodeCookie(req.cookies["auth-token"]);
+async function changePassword(req, res) {
+    const { currentPassword, newPassword, repeatNewPassword } = req.body;
 
-    try {
-        const user = await User.findByIdAndUpdate(userID, req.body, { new: true });
-        return res.send(user);
-    } catch (error) {
-        return res.status(500).send(error.message);
+    if (newPassword === repeatNewPassword) {
+        try {
+            const { userID } = decodeCookie(req.cookies["auth-token"]);
+            const currentUser = await User.findById(userID);
+            const result = await bcrypt.compare(currentPassword, currentUser.password);
+
+            if (result) {
+                const salt = bcrypt.genSaltSync(10);
+                const hash = bcrypt.hashSync(newPassword, salt);
+
+                const user = await User.findByIdAndUpdate(userID, { password: hash });
+                return res.clearCookie("auth-token").send(user);
+            } else {
+                return res.status(401).send("Wrong current password!");
+            }
+        } catch (error) {
+            return res.status(500).send(error.message);
+        }
+    } else {
+        return res.status(422).send("Password and repeat password don't match!");
     }
 }
 
@@ -105,12 +120,23 @@ async function getProfile(req, res) {
     }
 }
 
+async function deleteProfile(req, res) {
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findByIdAndDelete(userID);
+        return res.send(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
     register,
     login,
     logout,
-    editUser,
     getCart,
     getWishlist,
-    getProfile
+    getProfile,
+    changePassword,
+    deleteProfile
 };

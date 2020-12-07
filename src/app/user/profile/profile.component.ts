@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUser } from 'src/app/shared/interfaces/user';
 import { UserService } from '../user.service';
 
@@ -9,7 +10,7 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent implements OnInit {
   user: IUser;
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe(user => {
@@ -18,6 +19,14 @@ export class ProfileComponent implements OnInit {
   }
 
   changePasswordHandler(value: object): void {
-    // TODO: implement change password functionality
+    this.userService.changePassword(value).subscribe(() => {
+      this.router.navigate(['/login']);
+    });
+  }
+
+  deleteProfileHandler(): void {
+    this.userService.deleteProfile().subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

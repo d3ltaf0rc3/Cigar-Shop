@@ -20,4 +20,12 @@ export class UserService {
   getWishlist(): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${environment.apiURL}/user/wishlist`, { withCredentials: true });
   }
+
+  changePassword(data: object): Observable<IUser> {
+    return this.http.put<IUser>(`${environment.apiURL}/user/change-password`, data, { withCredentials: true });
+  }
+
+  deleteProfile(): Observable<IUser> {
+    return this.http.delete<IUser>(`${environment.apiURL}/user/delete`, { withCredentials: true });
+  }
 }
