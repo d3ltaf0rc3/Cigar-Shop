@@ -3,13 +3,15 @@
 <div class="container">
     <hr>
     <div class="inner-container">
-        <app-loader *ngIf="!wishlistItems"></app-loader>
-        <div class="product-container" *ngIf="wishlistItems.length">
-            <app-product-card *ngFor="let product of wishlistItems" [product]="product"></app-product-card>
-        </div>
-        <div class="notification" *ngIf="!wishlistItems.length">
-            Няма продукти за показване!
-        </div>
+        <app-loader *ngIf="!wishlistItems; else elseTemplate"></app-loader>
+        <ng-template #elseTemplate>
+            <div class="product-container" *ngIf="wishlistItems.length">
+                <app-product-card *ngFor="let product of wishlistItems" [product]="product"></app-product-card>
+            </div>
+            <div class="notification" *ngIf="!wishlistItems.length">
+                Няма продукти за показване!
+            </div>
+        </ng-template>
     </div>
     <div class="btns">
         <button [disabled]="!wishlistItems?.length">ИЗЧИСТИ СПИСЪКА С ЖЕЛАНИЯ</button>

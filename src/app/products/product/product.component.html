@@ -19,6 +19,10 @@
                 <span>1 брой - {{product?.price.toFixed(2)}} лв</span>
                 <span>10 броя - {{(product?.price * 10).toFixed(2)}} лв</span>
             </div>
+            <div class="btns">
+                <button (click)="addToCartHandler()">ДОБАВИ В КОЛИЧКАТА</button>
+                <button (click)="addToWishlistHandler()">ДОБАВИ КЪМ СПИСЪКА С ЖЕЛАНИЯ</button>
+            </div>
             <p>За консултация можете да се свържете с продуктовите специалисти от La Casa del Habano и Premium Cigars &
                 Tobacco на тел.: +359 2 953 11 80, +359 889 300 091, и <a
                     href="mailto:contact@kaliman.bg">contact@kaliman.bg</a>.</p>

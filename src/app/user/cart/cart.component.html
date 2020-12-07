@@ -3,18 +3,18 @@
 <div class="container">
     <hr>
     <div class="inner-container">
-        <app-loader *ngIf="!cartItems"></app-loader>
-        <div class="product-container" *ngIf="cartItems.length; else elseTemplate">
-            <app-product-card *ngFor="let product of cartItems" [product]="product"></app-product-card>
-        </div>
-        <div class="buy-container" *ngIf="cartItems.length">
-            <p class="price">{{totalPrice.toFixed(2)}} лв</p>
-            <div class="btn-container">
-                <button [disabled]="!cartItems.length">ПОРЪЧАЙ</button>
-            </div>
-        </div>
+        <app-loader *ngIf="!cartItems; else elseTemplate"></app-loader>
         <ng-template #elseTemplate>
-            <div class="notification">
+            <div class="product-container" *ngIf="cartItems.length">
+                <app-product-card *ngFor="let product of cartItems" [product]="product"></app-product-card>
+            </div>
+            <div class="buy-container" *ngIf="cartItems.length">
+                <p class="price">{{totalPrice.toFixed(2)}} лв</p>
+                <div class="btn-container">
+                    <button [disabled]="!cartItems.length">ПОРЪЧАЙ</button>
+                </div>
+            </div>
+            <div class="notification" *ngIf="!cartItems.length">
                 Няма продукти за показване!
             </div>
         </ng-template>

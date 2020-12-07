@@ -1,4 +1,4 @@
-import { Component, OnInit, DoCheck } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { ProductService } from '../product.service';
@@ -8,7 +8,7 @@ import { ProductService } from '../product.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit, DoCheck {
+export class ProductsComponent implements OnInit {
   products: IProduct[];
   title: string;
   constructor(private productService: ProductService, private route: ActivatedRoute) { }

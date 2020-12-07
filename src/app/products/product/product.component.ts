@@ -19,4 +19,12 @@ export class ProductComponent implements OnInit {
       this.product = product;
     });
   }
+
+  addToCartHandler(): void {
+    this.productService.addToCart(this.product._id).subscribe();
+  }
+
+  addToWishlistHandler(): void {
+    this.productService.addToWishlist(this.product._id).subscribe();
+  }
 }

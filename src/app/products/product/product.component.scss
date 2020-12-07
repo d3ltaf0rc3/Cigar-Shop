@@ -1,9 +1,9 @@
 hr {
-    border: 1px solid #262A2B;
+    border: 1px solid #262a2b;
 }
 
 .container {
-    padding: 50px 310px;   
+    padding: 50px 310px;
 }
 
 .product-info {
@@ -12,7 +12,8 @@ hr {
     align-items: center;
 }
 
-.features, .package {
+.features,
+.package {
     color: #e8e6e3;
     width: 100%;
     margin: 5px 0;
@@ -82,3 +83,22 @@ h6 {
     }
 }
 
+.btns {
+    display: flex;
+    width: 55%;
+    justify-content: space-between;
+    margin: 25px 0 10px;
+}
+
+.btns button {
+    background-color: #7b653e;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    color: #e8e6e3;
+    padding: 24px 60px;
+    cursor: pointer;
+    &:hover {
+        background-color: #483e22;
+    }
+}

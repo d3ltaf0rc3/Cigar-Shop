@@ -1,4 +1,5 @@
 const Product = require("../models/Product");
+const User = require("../models/User");
 const { decodeCookie } = require("../utils/decode-cookie");
 
 async function createProduct(req, res) {
@@ -33,8 +34,32 @@ async function getProducts(req, res) {
     }
 }
 
+async function addToWishlist(req, res) {
+    const { id } = req.body;
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findByIdAndUpdate(userID, { $addToSet: { wishlist: id } });
+        return res.send(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+async function addToCart(req, res) {
+    const { id } = req.body;
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findByIdAndUpdate(userID, { $addToSet: { cart: id } });
+        return res.send(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
     createProduct,
     getProduct,
-    getProducts
+    getProducts,
+    addToWishlist,
+    addToCart
 };

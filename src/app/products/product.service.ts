@@ -15,4 +15,12 @@ export class ProductService {
   getProduct(id: string): Observable<IProduct> {
     return this.http.get<IProduct>(`${environment.apiURL}/product/get/${id}`);
   }
+
+  addToCart(id: string): Observable<IProduct> {
+    return this.http.post<IProduct>(`${environment.apiURL}/product/cart/add`, { id }, { withCredentials: true });
+  }
+
+  addToWishlist(id: string): Observable<IProduct> {
+    return this.http.post<IProduct>(`${environment.apiURL}/product/wishlist/add`, { id }, { withCredentials: true });
+  }
 }
