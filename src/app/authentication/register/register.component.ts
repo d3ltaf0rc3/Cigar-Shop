@@ -8,7 +8,7 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['../index.scss']
 })
 export class RegisterComponent {
-  constructor(private authService: AuthenticationService,private router: Router) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   registerHandler(value: object): void {
     this.authService.register(value).subscribe(() => this.router.navigate(['/']));
