@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IBlog } from 'src/app/shared/interfaces/blog';
 
 @Component({
@@ -6,11 +6,7 @@ import { IBlog } from 'src/app/shared/interfaces/blog';
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss']
 })
-export class ItemComponent implements OnInit {
+export class ItemComponent {
   @Input() post: IBlog;
   constructor() { }
-
-  ngOnInit(): void {
-  }
-
 }
