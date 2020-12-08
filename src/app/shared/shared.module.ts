@@ -5,12 +5,14 @@ import { RouterModule } from '@angular/router';
 import { LowerNavbarComponent } from './lower-navbar/lower-navbar.component';
 import { TitleHeroSectionComponent } from './title-hero-section/title-hero-section.component';
 import { LoaderComponent } from './loader/loader.component';
+import { ErrorBoxComponent } from './error-box/error-box.component';
 
 @NgModule({
   declarations: [
     LowerNavbarComponent,
     TitleHeroSectionComponent,
-    LoaderComponent
+    LoaderComponent,
+    ErrorBoxComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { LoaderComponent } from './loader/loader.component';
   exports: [
     LowerNavbarComponent,
     TitleHeroSectionComponent,
-    LoaderComponent
+    LoaderComponent,
+    ErrorBoxComponent
   ]
 })
 export class SharedModule { }

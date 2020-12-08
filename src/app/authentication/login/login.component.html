@@ -3,9 +3,20 @@
 <section>
     <h1>ЛОГИН</h1>
     <hr>
+    <app-error-box *ngIf="username.touched && username.errors?.required" message="Username is required!">
+    </app-error-box>
+    <app-error-box *ngIf="password.touched && password.errors?.required" message="Password is required!">
+    </app-error-box>
+    <app-error-box *ngIf="username.touched && username.errors?.minlength"
+        message="Username must be at least 4 characters!"></app-error-box>
+    <app-error-box *ngIf="username.touched && username.errors?.pattern"
+        message="Username can only contain english letters, digits, underscored and dots!"></app-error-box>
+    <app-error-box *ngIf="password.touched && password.errors?.minlength"
+        message="Password must be at least 6 characters!"></app-error-box>
     <form #f="ngForm" (ngSubmit)="loginHandler(f.value)">
-        <input #username="ngModel" name="username" type="text" placeholder="Потребителско име" ngModel required>
-        <input #password="ngModel" name="password" type="password" placeholder="Парола" ngModel required>
+        <input #username="ngModel" name="username" type="text" placeholder="Потребителско име" ngModel required
+            minlength="4" pattern="^[\w\d\.]+$">
+        <input #password="ngModel" name="password" type="password" placeholder="Парола" ngModel required minlength="6">
         <button [disabled]="f.invalid">ВЛЕЗ</button>
     </form>
     <span>Нямате регистриран профил? <a routerLink="/register">Регистрирайте се от тук.</a></span>

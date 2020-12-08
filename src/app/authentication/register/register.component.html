@@ -3,11 +3,29 @@
 <section>
     <h1>РЕГИСТРАЦИЯ</h1>
     <hr>
+    <app-error-box *ngIf="username.touched && username.errors?.required" message="Username is required!">
+    </app-error-box>
+    <app-error-box *ngIf="password.touched && password.errors?.required" message="Password is required!">
+    </app-error-box>
+    <app-error-box *ngIf="rePassword.touched && rePassword.errors?.required" message="Repeat Password is required!">
+    </app-error-box>
+    <app-error-box *ngIf="username.touched && username.errors?.minlength"
+        message="Username must be at least 4 characters!"></app-error-box>
+    <app-error-box *ngIf="username.touched && username.errors?.pattern"
+        message="Username can only contain english letters, digits, underscored and dots!"></app-error-box>
+    <app-error-box *ngIf="password.touched && password.errors?.minlength"
+        message="Password must be at least 6 characters!"></app-error-box>
+    <app-error-box *ngIf="rePassword.touched && rePassword.errors?.minlength"
+        message="Repeat Password must be at least 6 characters!"></app-error-box>
+    <app-error-box *ngIf="rePassword.touched && password.touched && rePassword.value !== password.value"
+        message="Both passwords must match!"></app-error-box>
     <form #f="ngForm" (ngSubmit)="registerHandler(f.value)">
-        <input name="username" type="text" placeholder="Потребителско име" ngModel required>
-        <input name="password" type="password" placeholder="Парола" ngModel required>
-        <input name="repeatPassword" type="password" placeholder="Повторете паролата" ngModel required>
-        <button [disabled]="f.invalid">РЕГИСТРИРАЙ СЕ</button>
+        <input #username="ngModel" name="username" type="text" placeholder="Потребителско име" ngModel required
+            minlength="4" pattern="^[\w\d\.]+$">
+        <input #password="ngModel" name="password" type="password" placeholder="Парола" ngModel required minlength="6">
+        <input #rePassword="ngModel" name="repeatPassword" type="password" placeholder="Повторете паролата" ngModel
+            required minlength="6">
+        <button [disabled]="f.invalid || rePassword.value !== password.value">РЕГИСТРИРАЙ СЕ</button>
     </form>
     <span>Вече имате съществуващ профил? <a routerLink="/login">Влезте с него.</a></span>
 </section>
