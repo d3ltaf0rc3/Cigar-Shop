@@ -6,10 +6,18 @@
             <li><a routerLink="/brands">МАРКИ</a></li>
             <li><a routerLink="/contacts">КОНТАКТИ</a></li>
         </ul>
-        <ul>
+        <ul *ngIf="!isLogged; else elseTemplate">
             <li><a routerLink="/login"><i class="fas fa-key"></i>ЛОГИН</a></li>
             <li><a routerLink="/register"><i class="fas fa-user"></i>РЕГИСТРАЦИЯ</a></li>
         </ul>
+        <ng-template #elseTemplate>
+            <ul class="logged-list">
+                <li><a routerLink="/profile"><i class="fas fa-user"></i>ПРОФИЛ</a></li>
+                <li><a routerLink="/wishlist"><i class="fas fa-heart"></i>СПИСЪК С ЖЕЛАНИЯ</a></li>
+                <li><a routerLink="/cart"><i class="fas fa-shopping-cart"></i>КОЛИЧКА</a></li>
+                <li><button (click)="logoutHandler()"><i class="fas fa-sign-out-alt"></i>ИЗХОД</button></li>
+            </ul>
+        </ng-template>
     </div>
     <div class="img-container">
         <a routerLink="/"><img src="../../assets/images/logofooter.png" alt="logo"></a>

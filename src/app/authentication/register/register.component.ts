@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
@@ -7,9 +8,9 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['../index.scss']
 })
 export class RegisterComponent {
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService,private router: Router) { }
 
   registerHandler(value: object): void {
-    this.authService.register(value).subscribe(resp => console.log(resp));
+    this.authService.register(value).subscribe(() => this.router.navigate(['/']));
   }
 }

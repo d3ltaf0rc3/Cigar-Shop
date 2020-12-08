@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthenticationService } from '../authentication.service';
 
 @Component({
@@ -7,9 +8,11 @@ import { AuthenticationService } from '../authentication.service';
   styleUrls: ['../index.scss']
 })
 export class LoginComponent {
-  constructor(private authService: AuthenticationService) { }
+  constructor(private authService: AuthenticationService, private router: Router) { }
 
   loginHandler(value: object): void {
-    this.authService.login(value).subscribe(resp => console.log(resp));
+    this.authService.login(value).subscribe(() => {
+      this.router.navigate(['/']);
+    });
   }
 }

@@ -12,8 +12,14 @@ ul,
     justify-content: space-between;
 }
 
+button {
+    background: transparent;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+}
 
-a {
+a,button {
     color: $light-grey;
     font-size: 12px;
     font-family: Tahoma, Verdana, sans-serif;
@@ -77,4 +83,9 @@ a {
             }
         }
     }
+}
+
+.logged-list {
+    width: 420px !important;
+    justify-content: space-between;
 }

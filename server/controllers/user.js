@@ -61,7 +61,7 @@ async function logout(req, res) {
     if (!req.cookies["auth-token"]) {
         return res.status(422).send("Auth cookie missing!");
     }
-    return res.clearCookie("auth-token", cookieOptions).send("Logout is successful!");
+    return res.clearCookie("auth-token", cookieOptions).send({ message: "Logout is successful!" });
 }
 
 async function changePassword(req, res) {
