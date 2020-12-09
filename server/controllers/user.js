@@ -22,14 +22,14 @@ async function register(req, res) {
                     return res.cookie("auth-token", token, cookieOptions).send(user);
                 } catch (error) {
                     if (error.code === 11000) {
-                        return res.status(409).send("Username already taken!");
+                        return res.status(409).send({ message: "Username already taken!" });
                     }
-                    return res.status(500).send(error.message);
+                    return res.status(500).send({ message: error.message });
                 }
             });
         });
     } else {
-        return res.status(401).send("Both passwords should match!");
+        return res.status(401).send({ message: "Both passwords should match!" });
     }
 }
 
@@ -40,7 +40,7 @@ async function login(req, res) {
         .populate("wishlist");
 
     if (user === null) {
-        return res.status(401).send("Wrong username or password!");
+        return res.status(401).send({ message: "Wrong username or password!" });
     }
 
     const status = await bcrypt.compare(password, user.password);
@@ -53,13 +53,13 @@ async function login(req, res) {
 
         return res.cookie("auth-token", token, cookieOptions).send(user);
     } else {
-        return res.status(401).send("Wrong username or password!");
+        return res.status(401).send({ message: "Wrong username or password!" });
     }
 }
 
 async function logout(req, res) {
     if (!req.cookies["auth-token"]) {
-        return res.status(422).send("Auth cookie missing!");
+        return res.status(422).send({ message: "Auth cookie missing!" });
     }
     return res.clearCookie("auth-token", cookieOptions).send({ message: "Logout is successful!" });
 }

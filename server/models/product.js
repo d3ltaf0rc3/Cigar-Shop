@@ -18,32 +18,25 @@ const ProductSchema = new mongoose.Schema({
         required: true
     },
     brand: {
-        type: String,
-        required: true
+        type: String
     },
     vitola: {
-        type: String,
-        required: true
+        type: String
     },
     length: {
-        type: Number,
-        required: true
+        type: Number
     },
     ring: {
-        type: Number,
-        required: true
+        type: Number
     },
     strength: {
-        type: String,
-        required: true
+        type: String
     },
     time: {
-        type: Number,
-        required: true
+        type: Number
     },
     description: {
-        type: String,
-        required: true
+        type: String
     }
 });
 

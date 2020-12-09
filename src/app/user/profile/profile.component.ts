@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { mergeMap } from 'rxjs/operators';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { IUser } from 'src/app/shared/interfaces/user';
 import { UserService } from '../user.service';
 
@@ -10,7 +12,7 @@ import { UserService } from '../user.service';
 })
 export class ProfileComponent implements OnInit {
   user: IUser;
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService, private authService: AuthenticationService, private router: Router) { }
 
   ngOnInit(): void {
     this.userService.getProfile().subscribe(user => {
@@ -26,6 +28,7 @@ export class ProfileComponent implements OnInit {
 
   deleteProfileHandler(): void {
     this.userService.deleteProfile().subscribe(() => {
+      this.authService.logout().subscribe();
       this.router.navigate(['/']);
     });
   }

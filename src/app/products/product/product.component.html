@@ -6,7 +6,7 @@
     <ng-template #elseContainer>
         <div class="product-info">
             <img [src]="product?.imageUrl" alt="cigar">
-            <div class="features">
+            <div class="features" *ngIf="product.brand">
                 <span><i class="fas fa-tag"></i>{{product?.brand}}</span>
                 <span><i class="fas fa-ruler"></i>{{product?.vitola}}</span>
                 <span><i class="fas fa-arrows-alt-h"></i>{{product?.length}} мм</span>
@@ -14,11 +14,16 @@
                 <span><i class="fas fa-leaf"></i>{{product?.strength}}</span>
                 <span><i class="far fa-clock"></i>{{product?.time}} мин.</span>
             </div>
-            <div class="package">
+            <div class="package" *ngIf="product.type === 'habanos' || product.type === 'others'; else elseTemplate">
                 <span>Пури в опаковка:</span>
                 <span>1 брой - {{product?.price.toFixed(2)}} лв</span>
                 <span>10 броя - {{(product?.price * 10).toFixed(2)}} лв</span>
             </div>
+            <ng-template #elseTemplate>
+                <div class="price-container">
+                    <h1 class="price">Цена: {{product.price.toFixed(2)}} лв</h1>
+                </div>
+            </ng-template>
             <div class="btns">
                 <button (click)="addToCartHandler()">ДОБАВИ В КОЛИЧКАТА</button>
                 <button (click)="addToWishlistHandler()">ДОБАВИ КЪМ СПИСЪКА С ЖЕЛАНИЯ</button>
@@ -28,7 +33,7 @@
                     href="mailto:contact@kaliman.bg">contact@kaliman.bg</a>.</p>
         </div>
         <hr>
-        <div class="description">
+        <div class="description" *ngIf="product.description">
             <h6>ОПИСАНИЕ</h6>
             <p>{{product?.description}}</p>
         </div>

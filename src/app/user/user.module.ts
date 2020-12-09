@@ -11,6 +11,7 @@ import { CartComponent } from './cart/cart.component';
 
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationModule } from '../authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     SharedModule,
     RouterModule,
     FormsModule,
-    ProductsModule
+    ProductsModule,
+    AuthenticationModule
   ],
   providers: [
     UserService

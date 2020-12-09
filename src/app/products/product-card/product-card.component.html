@@ -5,7 +5,7 @@
         </a>
     </div>
     <div class="product-info">
-        <div class="features">
+        <div class="features" *ngIf="product.length">
             <span><i class="fas fa-arrows-alt-h"></i>{{product.length}} мм</span>
             <span><i class="fas fa-ring"></i>{{product.ring}} ринг</span>
         </div>
