@@ -14,16 +14,17 @@ import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
+import { AuthGuard } from './authentication/auth.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
+  { path: 'login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'cigars', component: ProductsComponent },
   { path: 'product/:id', component: ProductComponent },
-  { path: 'profile', component: ProfileComponent },
-  { path: 'wishlist', component: WishlistComponent },
-  { path: 'cart', component: CartComponent },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
+  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'brands', component: BrandsComponent },
   { path: 'contacts', component: ContactsComponent },

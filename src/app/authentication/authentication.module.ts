@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AuthenticationService } from './authentication.service';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { AuthenticationService } from './authentication.service';
     RegisterComponent
   ],
   providers: [
-    AuthenticationService
+    AuthenticationService,
+    AuthGuard
   ],
   imports: [
     CommonModule,
