@@ -5,14 +5,14 @@
     <app-loader *ngIf="!product; else elseContainer"></app-loader>
     <ng-template #elseContainer>
         <div class="product-info">
-            <img [src]="product?.imageUrl" alt="cigar">
+            <img [src]="product.imageUrl" alt="cigar">
             <div class="features" *ngIf="product.brand">
-                <span><i class="fas fa-tag"></i>{{product?.brand}}</span>
-                <span><i class="fas fa-ruler"></i>{{product?.vitola}}</span>
-                <span><i class="fas fa-arrows-alt-h"></i>{{product?.length}} мм</span>
-                <span><i class="fas fa-ring"></i>{{product?.ring}} ринг</span>
-                <span><i class="fas fa-leaf"></i>{{product?.strength}}</span>
-                <span><i class="far fa-clock"></i>{{product?.time}} мин.</span>
+                <span><i class="fas fa-tag"></i>{{product.brand}}</span>
+                <span><i class="fas fa-ruler"></i>{{product.vitola}}</span>
+                <span><i class="fas fa-arrows-alt-h"></i>{{product.length}} мм</span>
+                <span><i class="fas fa-ring"></i>{{product.ring}} ринг</span>
+                <span><i class="fas fa-leaf"></i>{{product.strength}}</span>
+                <span><i class="far fa-clock"></i>{{product.time}} мин.</span>
             </div>
             <div class="package" *ngIf="product.type === 'habanos' || product.type === 'others'; else elseTemplate">
                 <span>Пури в опаковка:</span>
@@ -24,9 +24,12 @@
                     <h1 class="price">Цена: {{product.price.toFixed(2)}} лв</h1>
                 </div>
             </ng-template>
-            <div class="btns">
-                <button (click)="addToCartHandler()">ДОБАВИ В КОЛИЧКАТА</button>
-                <button (click)="addToWishlistHandler()">ДОБАВИ КЪМ СПИСЪКА С ЖЕЛАНИЯ</button>
+            <div class="btns" *ngIf="isLogged">
+                <button (click)="addToCartHandler()" *ngIf="!isInCart">ДОБАВИ В КОЛИЧКАТА</button>
+                <button (click)="removeFromCartHandler()" *ngIf="isInCart">ПРЕМАХНИ ОТ КОЛИЧКАТА</button>
+                <button (click)="addToWishlistHandler()" *ngIf="!isInWishlist">ДОБАВИ КЪМ СПИСЪКА С ЖЕЛАНИЯ</button>
+                <button (click)="removeFromWishlistHandler()" *ngIf="isInWishlist">ПРЕМАХНИ ОТ СПИСЪКА С
+                    ЖЕЛАНИЯ</button>
             </div>
             <p>За консултация можете да се свържете с продуктовите специалисти от La Casa del Habano и Premium Cigars &
                 Tobacco на тел.: +359 2 953 11 80, +359 889 300 091, и <a
@@ -35,7 +38,7 @@
         <hr>
         <div class="description" *ngIf="product.description">
             <h6>ОПИСАНИЕ</h6>
-            <p>{{product?.description}}</p>
+            <p>{{product.description}}</p>
         </div>
         <div class="images">
             <img src="../../../assets/images/homepage_contacts_left.jpg" alt="left">

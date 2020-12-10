@@ -38,7 +38,9 @@ async function addToWishlist(req, res) {
     const { id } = req.body;
     try {
         const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findByIdAndUpdate(userID, { $addToSet: { wishlist: id } });
+        const user = await User.findByIdAndUpdate(userID, { $addToSet: { wishlist: id } }, { new: true })
+            .populate("cart")
+            .populate("wishlist");
         return res.send(user);
     } catch (error) {
         return res.status(500).send(error.message);
@@ -49,7 +51,35 @@ async function addToCart(req, res) {
     const { id } = req.body;
     try {
         const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findByIdAndUpdate(userID, { $addToSet: { cart: id } });
+        const user = await User.findByIdAndUpdate(userID, { $addToSet: { cart: id } }, { new: true })
+            .populate("cart")
+            .populate("wishlist");
+        return res.send(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+async function removeFromWishlist(req, res) {
+    const { id } = req.body;
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findByIdAndUpdate(userID, { $pull: { wishlist: id } }, { new: true })
+            .populate("cart")
+            .populate("wishlist");
+        return res.send(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+async function removeFromCart(req, res) {
+    const { id } = req.body;
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findByIdAndUpdate(userID, { $pull: { cart: id } }, { new: true })
+            .populate("cart")
+            .populate("wishlist");
         return res.send(user);
     } catch (error) {
         return res.status(500).send(error.message);
@@ -61,5 +91,7 @@ module.exports = {
     getProduct,
     getProducts,
     addToWishlist,
-    addToCart
+    addToCart,
+    removeFromWishlist,
+    removeFromCart
 };

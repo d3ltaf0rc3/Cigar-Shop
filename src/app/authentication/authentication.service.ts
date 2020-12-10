@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { tap } from 'rxjs/operators';
+import { IUser } from '../shared/interfaces/user';
 
 @Injectable()
 export class AuthenticationService {
@@ -18,8 +19,8 @@ export class AuthenticationService {
   login(data: object): Observable<any> {
     return this.http.post(`${environment.apiURL}/login`, data, this.httpOptions).pipe(
       tap((user) => {
-        localStorage.setItem('user', user);
-        this.user = user;
+        localStorage.setItem('user', JSON.stringify(user));
+        this.user = JSON.stringify(user);
       })
     );
   }
@@ -27,8 +28,8 @@ export class AuthenticationService {
   register(data: object): Observable<any> {
     return this.http.post(`${environment.apiURL}/register`, data, this.httpOptions).pipe(
       tap((user) => {
-        localStorage.setItem('user', user);
-        this.user = user;
+        localStorage.setItem('user', JSON.stringify(user));
+        this.user = JSON.stringify(user);
       })
     );
   }
@@ -40,5 +41,10 @@ export class AuthenticationService {
         this.user = '';
       })
     );
+  }
+
+  updateUser(user: IUser): void {
+    localStorage.setItem('user', JSON.stringify(user));
+    this.user = JSON.stringify(user);
   }
 }
