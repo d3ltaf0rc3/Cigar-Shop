@@ -14,7 +14,7 @@
         </ng-template>
     </div>
     <div class="btns">
-        <button [disabled]="!wishlistItems?.length">ИЗЧИСТИ СПИСЪКА С ЖЕЛАНИЯ</button>
+        <button [disabled]="!wishlistItems?.length" (click)="clearWishlistHandler()">ИЗЧИСТИ СПИСЪКА С ЖЕЛАНИЯ</button>
         <a routerLink="/profile">КЪМ ПРОФИЛА</a>
     </div>
 </div>

@@ -38,4 +38,10 @@ button, a {
 
 button {
     margin-right: 15px;
+    cursor: pointer;
+}
+
+button:disabled {
+    cursor: default;
+    background-color: #a1a1a171;
 }

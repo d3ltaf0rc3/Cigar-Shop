@@ -130,6 +130,17 @@ async function deleteProfile(req, res) {
     }
 }
 
+async function clearWishlist(req, res) {
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findByIdAndUpdate(userID, { wishlist: [] }, { new: true })
+            .populate("cart");
+        return res.send(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
     register,
     login,
@@ -138,5 +149,6 @@ module.exports = {
     getWishlist,
     getProfile,
     changePassword,
-    deleteProfile
+    deleteProfile,
+    clearWishlist
 };

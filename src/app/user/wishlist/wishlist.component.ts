@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/user/user.service';
 import { IProduct } from 'src/app/shared/interfaces/product';
+import { tap } from 'rxjs/operators';
+import { IUser } from 'src/app/shared/interfaces/user';
+import { AuthenticationService } from 'src/app/authentication/authentication.service';
 
 @Component({
   selector: 'app-wishlist',
@@ -9,11 +12,20 @@ import { IProduct } from 'src/app/shared/interfaces/product';
 })
 export class WishlistComponent implements OnInit {
   wishlistItems: IProduct[];
-  constructor(private userService: UserService) { }
+  constructor(
+    private userService: UserService,
+    private authService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.userService.getWishlist().subscribe(wishlist => {
       this.wishlistItems = wishlist;
     });
+  }
+
+  clearWishlistHandler(): void {
+    this.userService.clearWishlist().pipe(
+      tap((user: IUser) => this.authService.updateUser(user)),
+      tap(() => this.wishlistItems = [])
+    ).subscribe();
   }
 }

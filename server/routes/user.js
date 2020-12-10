@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { register, login, logout, changePassword, getCart, getWishlist, getProfile, deleteProfile } = require("../controllers/user");
+const { register, login, logout, changePassword, getCart, getWishlist, getProfile, deleteProfile, clearWishlist } = require("../controllers/user");
 
 router.post("/login", login);
 router.post("/register", register);
@@ -10,5 +10,6 @@ router.get("/user/cart", getCart);
 router.get("/user/wishlist", getWishlist);
 router.get("/user/profile", getProfile);
 router.delete("/user/delete", deleteProfile);
+router.delete("/user/wishlist", clearWishlist);
 
 module.exports = router;

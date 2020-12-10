@@ -28,4 +28,8 @@ export class UserService {
   deleteProfile(): Observable<IUser> {
     return this.http.delete<IUser>(`${environment.apiURL}/user/delete`, { withCredentials: true });
   }
+
+  clearWishlist(): Observable<IUser> {
+    return this.http.delete<IUser>(`${environment.apiURL}/user/wishlist`, { withCredentials: true });
+  }
 }
