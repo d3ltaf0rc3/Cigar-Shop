@@ -97,7 +97,6 @@ button:disabled {
     button, a {
         font-size: 13px;
         padding: 10px 20px;
-        border-radius: 2px;
     }
 
     button {
@@ -106,8 +105,8 @@ button:disabled {
     }
 
     a {
-        background-color: $gold;
-        color: $white;
+        background-color: #483e23;
+        color: #ccc7c0;
         font-weight: 600;
     }
 }

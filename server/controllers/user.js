@@ -78,7 +78,7 @@ async function changePassword(req, res) {
                 const hash = bcrypt.hashSync(newPassword, salt);
 
                 const user = await User.findByIdAndUpdate(userID, { password: hash });
-                return res.clearCookie("auth-token").send(user);
+                return res.send(user);
             } else {
                 return res.status(401).send("Wrong current password!");
             }

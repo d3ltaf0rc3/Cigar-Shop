@@ -6,7 +6,7 @@
         <div class="heading">
             <app-loader *ngIf="!user; else elseTemplate"></app-loader>
             <ng-template #elseTemplate>
-                <img [src]="user.imageUrl" alt="avatar">
+                <img src="../../../assets/images/user.png" alt="avatar">
                 <h1>{{user.username}}</h1>
             </ng-template>
         </div>
@@ -14,12 +14,25 @@
             <div class="form-container">
                 <h1>ПРОМЯНА НА ПАРОЛА</h1>
                 <hr>
+                <app-error-box
+                    *ngIf="(currentPassword.touched && newPassword.touched && repeatNewPassword.touched) && (currentPassword.errors?.required || newPassword.errors?.required || repeatNewPassword.errors?.required)"
+                    message="Всички полета са задължителни!"></app-error-box>
+                <app-error-box
+                    *ngIf="currentPassword.errors?.minlength || newPassword.errors?.minlength || repeatNewPassword.errors?.minlength"
+                    message="Паролата трябва да има дължина от поне 6 символа!"></app-error-box>
+                <app-error-box
+                    *ngIf="newPassword.touched && repeatNewPassword.touched && newPassword.value !== repeatNewPassword.value"
+                    message="И двете пароли трябва да съвпадат!">
+                </app-error-box>
                 <form #f="ngForm" (ngSubmit)="changePasswordHandler(f.value)">
-                    <input name="currentPassword" type="password" placeholder="Текуща парола" ngModel required>
-                    <input name="newPassword" type="password" placeholder="Нова парола" ngModel required>
-                    <input name="repeatNewPassword" type="password" placeholder="Повторете новата парола" ngModel
-                        required>
-                    <button [disabled]="f.invalid">Промяна на парола</button>
+                    <input #currentPassword="ngModel" name="currentPassword" type="password" placeholder="Текуща парола"
+                        ngModel required minlength="6">
+                    <input #newPassword="ngModel" name="newPassword" type="password" placeholder="Нова парола" ngModel
+                        required minlength="6">
+                    <input #repeatNewPassword="ngModel" name="repeatNewPassword" type="password"
+                        placeholder="Повторете новата парола" ngModel required minlength="6">
+                    <button [disabled]="f.invalid || newPassword.value !== repeatNewPassword.value">Промяна на
+                        парола</button>
                 </form>
             </div>
             <div class="btns">
