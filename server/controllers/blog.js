@@ -1,4 +1,4 @@
-const Blog = require("../models/blog");
+const Blog = require("../models/Blog");
 const { decodeCookie } = require("../utils/decode-cookie");
 
 async function createPost(req, res) {
