@@ -3,6 +3,7 @@
 Kaliman Caribe Ltd. is an exclusive distributor of the prestigious brand of hand made Habanos cigars within Bulgaria.
 This is my remake of their website using Angular and a Node.js REST API. You can create an account, look at products, add them to your cart or wishlist or you could read the blog!
 
+You can try the app [here](https://cigar-shop.herokuapp.com)
 [Link to the official website](https://kalimancaribe.com/bg/)
 
 ## 1. How is it built
