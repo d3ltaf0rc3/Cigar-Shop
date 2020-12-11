@@ -2,7 +2,8 @@
 
 Kaliman Caribe Ltd. is an exclusive distributor of the prestigious brand of hand made Habanos cigars within Bulgaria.
 This is my remake of their website using Angular and a Node.js REST API. You can create an account, look at products, add them to your cart or wishlist or you could read the blog!
-[Link to the original website](https://kalimancaribe.com/bg/)
+
+[Link to the official website](https://kalimancaribe.com/bg/)
 
 ## 1. How is it built
 * [The back-end](./server) portion uses **Express**, **mongoose**, **bcrypt** for password hashing, **jsonwebtoken (JWT)** for encoding user data stored in cookies and **MongoDB** for storage.
@@ -30,11 +31,10 @@ This is my remake of their website using Angular and a Node.js REST API. You can
 
 ### Angular application
 
-## Project set up and running
 * After cloning the repo, run **`npm install`**
 * Run **`ng serve`**
 
-### The app runs on **`localhost:4200`**
+#### The app runs on **`localhost:4200`**
 
 ## 4. Routes
 
