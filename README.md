@@ -1,27 +1,57 @@
 # CigarShop
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Kaliman Caribe Ltd. is an exclusive distributor of the prestigious brand of hand made Habanos cigars within Bulgaria.
+This is my remake of their website using Angular and a Node.js REST API. You can create an account, look at products, add them to your cart or wishlist or you could read the blog!
+[Link to the original website](https://kalimancaribe.com/bg/)
 
-## Development server
+## 1. How is it built
+* [The back-end](./server) portion uses **Express**, **mongoose**, **bcrypt** for password hashing, **jsonwebtoken (JWT)** for encoding user data stored in cookies and **MongoDB** for storage.
+* [The front-end](./src) portion uses **Angular**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 2. Functionality
+* Unauthenticated users are allowed to read the blog and look at products without being able to buy them or add them to the wishlist.
+* Authorized users can add products to the cart or the wishlist.
 
-## Code scaffolding
+## 3. Setup
+### REST-API
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+* Run **npm install** (make sure you install the dev dependencies as well)
+* Create a **_.env_** file which contains the following variables:
 
-## Build
+    | Variable             | Value                |
+    |----------------------|----------------------|
+    | DB_URL               | Database URL         |
+    | SECRET               | CookieParser secret  |
+    | JWT_KEY              | JWT secret key       |
+    | PORT                 | Port for REST API    |
+    | APP_URL              | React App URL        |
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* Run **node(mon) -r dotenv/config index.js**
 
-## Running unit tests
+### Angular application
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Project set up and running
+* After cloning the repo, run **`npm install`**
+* Run **`ng serve`**
 
-## Running end-to-end tests
+### The app runs on **`localhost:4200`**
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## 4. Routes
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+| Route               | Description                                            |
+| ------------------- | ------------------------------------------------------ |
+| /                   | Home page                                              |
+| /login              | Login page                                             |
+| /register           | Register page                                          |
+| /profile            | User's profile page which also contains the settings   |
+| /wishlist           | Wishlist page                                          |
+| /cart               | Cart page                                              |
+| /blog               | All blog posts                                         |
+| /blog/details/(id)  | Blog post page                                         |
+| /cigars?type=/type/ | Cigar pages containing different types of cigars       |
+| /product/(id)       | Product details page                                   |
+| /about-us           | About us page                                          |
+| /brands             | Page containing the logos of all brands                |
+| /contacts           | Contacts page                                          |
+| /newsletter         | Page containing links to every year's newsletter       |
+| any other route     | Error Page                                             |
