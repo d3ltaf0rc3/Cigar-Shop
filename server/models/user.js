@@ -14,10 +14,6 @@ const UserSchema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Product"
     }],
-    imageUrl: {
-        type: String,
-        default: "https://res.cloudinary.com/smile-social-network/image/upload/v1600976280/download_udtdbe.png"
-    },
     wishlist: [{
         type: mongoose.SchemaTypes.ObjectId,
         ref: "Product"
