@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
+      this.products = null;
       switch (params.type) {
         case 'habanos': this.title = 'HABANOS ПУРИ'; break;
         case 'others': this.title = 'ДРУГИ ПУРИ'; break;
