@@ -6,6 +6,9 @@ const productRouter = require("./routes/product");
 const blogRouter = require("./routes/blog");
 const app = express();
 
+require("./models/User");
+require("./models/Product");
+require("./models/Blog");
 expressConfig(app);
 connectToDB();
 
