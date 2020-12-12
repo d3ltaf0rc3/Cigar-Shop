@@ -7,6 +7,8 @@ You can try the app [here](https://cigar-shop.herokuapp.com)
 
 [Link to the official website](https://kalimancaribe.com/bg/)
 
+![CI](https://github.com/d3ltaf0rc3/Cigar-Shop/workflows/CI/badge.svg)
+
 ## 1. How is it built
 * [The back-end](./server) portion uses **Express**, **mongoose**, **bcrypt** for password hashing, **jsonwebtoken (JWT)** for encoding user data stored in cookies and **MongoDB** for storage.
 * [The front-end](./src) portion uses **Angular**.
