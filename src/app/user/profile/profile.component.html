@@ -14,6 +14,7 @@
             <div class="form-container">
                 <h1>ПРОМЯНА НА ПАРОЛА</h1>
                 <hr>
+                <app-error-box *ngIf="error" [message]="error"></app-error-box>
                 <app-error-box
                     *ngIf="(currentPassword.touched && newPassword.touched && repeatNewPassword.touched) && (currentPassword.errors?.required || newPassword.errors?.required || repeatNewPassword.errors?.required)"
                     message="Всички полета са задължителни!"></app-error-box>
