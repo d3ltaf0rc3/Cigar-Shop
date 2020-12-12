@@ -3,16 +3,17 @@
 <section>
     <h1>ЛОГИН</h1>
     <hr>
-    <app-error-box *ngIf="username.touched && username.errors?.required" message="Username is required!">
+    <app-error-box *ngIf="error" [message]="error"></app-error-box>
+    <app-error-box *ngIf="username.touched && username.errors?.required" message="Потребителското име е задължително!">
     </app-error-box>
-    <app-error-box *ngIf="password.touched && password.errors?.required" message="Password is required!">
+    <app-error-box *ngIf="password.touched && password.errors?.required" message="Паролата е задължителна!">
     </app-error-box>
     <app-error-box *ngIf="username.touched && username.errors?.minlength"
-        message="Username must be at least 4 characters!"></app-error-box>
+        message="Потребителското име трябва да бъде поне 4 символа!"></app-error-box>
     <app-error-box *ngIf="username.touched && username.errors?.pattern"
-        message="Username can only contain english letters, digits, underscored and dots!"></app-error-box>
+        message="Потребителското име може да съдържа само букви, цифри, долни черти и точки!"></app-error-box>
     <app-error-box *ngIf="password.touched && password.errors?.minlength"
-        message="Password must be at least 6 characters!"></app-error-box>
+        message="Паролата трябва да бъде поне 6 символа!"></app-error-box>
     <form #f="ngForm" (ngSubmit)="loginHandler(f.value)">
         <input #username="ngModel" name="username" type="text" placeholder="Потребителско име" ngModel required
             minlength="4" pattern="^[\w\d\.]+$">
