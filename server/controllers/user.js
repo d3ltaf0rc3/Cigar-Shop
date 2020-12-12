@@ -22,14 +22,14 @@ async function register(req, res) {
                     return res.cookie("auth-token", token, cookieOptions).send(user);
                 } catch (error) {
                     if (error.code === 11000) {
-                        return res.status(409).send({ message: "Username already taken!" });
+                        return res.status(409).send({ message: "Потребителското име вече е заето!" });
                     }
                     return res.status(500).send({ message: error.message });
                 }
             });
         });
     } else {
-        return res.status(401).send({ message: "Both passwords should match!" });
+        return res.status(401).send({ message: "Двете пароли трябва да съвпадат!" });
     }
 }
 
@@ -40,7 +40,7 @@ async function login(req, res) {
         .populate("wishlist");
 
     if (user === null) {
-        return res.status(401).send({ message: "Wrong username or password!" });
+        return res.status(401).send({ message: "Грешно потребителско име или парола!" });
     }
 
     const status = await bcrypt.compare(password, user.password);
@@ -53,7 +53,7 @@ async function login(req, res) {
 
         return res.cookie("auth-token", token, cookieOptions).send(user);
     } else {
-        return res.status(401).send({ message: "Wrong username or password!" });
+        return res.status(401).send({ message: "Грешно потребителско име или парола!" });
     }
 }
 
@@ -80,13 +80,13 @@ async function changePassword(req, res) {
                 const user = await User.findByIdAndUpdate(userID, { password: hash });
                 return res.send(user);
             } else {
-                return res.status(401).send("Wrong current password!");
+                return res.status(401).send("Грешна парола!");
             }
         } catch (error) {
             return res.status(500).send(error.message);
         }
     } else {
-        return res.status(422).send("Password and repeat password don't match!");
+        return res.status(422).send("Двете пароли трябва да съвпадат!");
     }
 }
 
