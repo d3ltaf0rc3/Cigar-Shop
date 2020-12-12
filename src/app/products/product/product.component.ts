@@ -19,11 +19,11 @@ export class ProductComponent implements OnInit {
   }
 
   get isInCart(): boolean {
-    return !!JSON.parse(this.authService.user).cart.find((el: IProduct) => el._id === this.product._id);
+    return !!this.authService.user.cart.find((el: IProduct) => el._id === this.product._id);
   }
 
   get isInWishlist(): boolean {
-    return !!JSON.parse(this.authService.user).wishlist.find((el: IProduct) => el._id === this.product._id);
+    return !!this.authService.user.wishlist.find((el: IProduct) => el._id === this.product._id);
   }
 
   constructor(

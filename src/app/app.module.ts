@@ -7,6 +7,8 @@ import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { ProductsModule } from './products/products.module';
 import { UserModule } from './user/user.module';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -19,6 +21,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { BrandsComponent } from './brands/brands.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
+import { reducers } from './+store';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -41,7 +45,12 @@ import { NewsletterComponent } from './newsletter/newsletter.component';
     SharedModule,
     CoreModule,
     ProductsModule,
-    UserModule
+    UserModule,
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   bootstrap: [AppComponent]
 })
