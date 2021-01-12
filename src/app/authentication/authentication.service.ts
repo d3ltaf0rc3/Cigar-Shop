@@ -1,8 +1,8 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { environment } from '../../environments/environment';
-import { tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { IUser } from '../shared/interfaces/user';
 import { Store } from '@ngrx/store';
 import { IRootState } from '../+store';
@@ -12,12 +12,22 @@ import { setUser, clearUser } from '../+store/actions';
 export class AuthenticationService {
   httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'content-type': 'application/json'
     }),
     withCredentials: true
   };
   user: IUser;
+
   constructor(private http: HttpClient, private store: Store<IRootState>) {
+    this.http.get(`${environment.apiURL}/user/verify`, { withCredentials: true }).pipe(
+      catchError(err => {
+        if (!err.ok) {
+          localStorage.removeItem('user');
+          this.store.dispatch(clearUser());
+          return throwError(err);
+        }
+      })
+    ).subscribe();
     this.store.select((state) => state.auth.user).subscribe(user => {
       this.user = user;
     });

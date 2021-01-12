@@ -141,6 +141,18 @@ async function clearWishlist(req, res) {
     }
 }
 
+async function verifyUser(req, res) {
+    try {
+        const { userID } = decodeCookie(req.cookies["auth-token"]);
+        const user = await User.findById(userID)
+            .populate("cart")
+            .populate("wishlist");
+        return res.send(user);
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
 module.exports = {
     register,
     login,
@@ -150,5 +162,6 @@ module.exports = {
     getProfile,
     changePassword,
     deleteProfile,
-    clearWishlist
+    clearWishlist,
+    verifyUser
 };
