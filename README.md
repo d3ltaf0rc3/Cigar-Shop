@@ -47,9 +47,9 @@ You can try the app [here](https://cigar-shop.herokuapp.com)
 | /                   | Home page                                              |
 | /login              | Login page                                             |
 | /register           | Register page                                          |
-| /profile            | User's profile page which also contains the settings   |
-| /wishlist           | Wishlist page                                          |
-| /cart               | Cart page                                              |
+| /user/profile            | User's profile page which also contains the settings   |
+| /user/wishlist           | Wishlist page                                          |
+| /user/cart               | Cart page                                              |
 | /blog               | All blog posts                                         |
 | /blog/details/(id)  | Blog post page                                         |
 | /cigars?type=/type/ | Cigar pages containing different types of cigars       |
