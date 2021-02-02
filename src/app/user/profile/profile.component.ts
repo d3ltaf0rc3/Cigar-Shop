@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  changePasswordHandler(value: object): void {
+  changePasswordHandler(value: { currentPassword: string; newPassword: string; repeatNewPassword: string }): void {
     this.userService.changePassword(value).pipe(
       catchError(err => {
         if (!err.ok) {

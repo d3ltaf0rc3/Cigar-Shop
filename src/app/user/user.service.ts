@@ -21,7 +21,7 @@ export class UserService {
     return this.http.get<IProduct[]>(`${environment.apiURL}/user/wishlist`, { withCredentials: true });
   }
 
-  changePassword(data: object): Observable<IUser> {
+  changePassword(data: { currentPassword: string; newPassword: string; repeatNewPassword: string }): Observable<IUser> {
     return this.http.put<IUser>(`${environment.apiURL}/user/change-password`, data, { withCredentials: true });
   }
 

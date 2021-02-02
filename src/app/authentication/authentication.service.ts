@@ -33,7 +33,7 @@ export class AuthenticationService {
     });
   }
 
-  login(data: object): Observable<IUser> {
+  login(data: { username: string; password: string }): Observable<IUser> {
     return this.http.post(`${environment.apiURL}/login`, data, this.httpOptions).pipe(
       tap((user: IUser) => {
         localStorage.setItem('user', JSON.stringify(user));
@@ -42,7 +42,7 @@ export class AuthenticationService {
     );
   }
 
-  register(data: object): Observable<IUser> {
+  register(data: { username: string; password: string; repeatPassword: string }): Observable<IUser> {
     return this.http.post(`${environment.apiURL}/register`, data, this.httpOptions).pipe(
       tap((user: IUser) => {
         localStorage.setItem('user', JSON.stringify(user));

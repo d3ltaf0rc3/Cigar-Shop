@@ -12,10 +12,6 @@ export const initialState: IAuthState = {
 
 export const authReducer = createReducer<IAuthState>(
     initialState,
-    on(setUser, (state, action) => {
-        return { ...state, user: action.user };
-    }),
-    on(clearUser, (state) => {
-        return {...state, user: null};
-    })
+    on(setUser, (state, action) => ({ ...state, user: action.user })),
+    on(clearUser, (state) => ({...state, user: null}))
 );

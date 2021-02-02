@@ -36,6 +36,10 @@
             "prefix": "app",
             "style": "camelCase"
           }
+        ],
+        "no-underscore-dangle": [
+          2, 
+          { "allow": ["_id"] }
         ]
       }
     },

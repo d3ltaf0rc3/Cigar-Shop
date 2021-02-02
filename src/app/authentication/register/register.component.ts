@@ -13,7 +13,7 @@ export class RegisterComponent {
   error: string;
   constructor(private authService: AuthenticationService, private router: Router) { }
 
-  registerHandler(value: object): void {
+  registerHandler(value: { username: string; password: string; repeatPassword: string }): void {
     this.authService.register(value).pipe(
       catchError(err => {
         if (!err.ok) {

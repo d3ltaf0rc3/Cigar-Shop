@@ -13,7 +13,7 @@ export class LoginComponent {
   error: string;
   constructor(private authService: AuthenticationService, private router: Router) { }
 
-  loginHandler(value: object): void {
+  loginHandler(value: { username: string; password: string }): void {
     this.authService.login(value).pipe(
       catchError(err => {
         if (!err.ok) {
