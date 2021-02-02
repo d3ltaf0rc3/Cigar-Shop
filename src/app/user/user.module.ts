@@ -12,6 +12,7 @@ import { CartComponent } from './cart/cart.component';
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthenticationModule } from '../authentication/authentication.module';
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   declarations: [
@@ -26,15 +27,11 @@ import { AuthenticationModule } from '../authentication/authentication.module';
     RouterModule,
     FormsModule,
     ProductsModule,
-    AuthenticationModule
+    AuthenticationModule,
+    UserRoutingModule
   ],
   providers: [
     UserService
-  ],
-  exports: [
-    ProfileComponent,
-    WishlistComponent,
-    CartComponent
   ]
 })
 export class UserModule { }

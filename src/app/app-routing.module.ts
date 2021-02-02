@@ -8,9 +8,6 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ProductComponent } from './products/product/product.component';
 import { ProductsComponent } from './products/products/products.component';
-import { CartComponent } from './user/cart/cart.component';
-import { ProfileComponent } from './user/profile/profile.component';
-import { WishlistComponent } from './user/wishlist/wishlist.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
@@ -22,13 +19,11 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'cigars', component: ProductsComponent },
   { path: 'product/:id', component: ProductComponent },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard] },
-  { path: 'wishlist', component: WishlistComponent, canActivate: [AuthGuard] },
-  { path: 'cart', component: CartComponent, canActivate: [AuthGuard] },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'brands', component: BrandsComponent },
   { path: 'contacts', component: ContactsComponent },
   { path: 'newsletter', component: NewsletterComponent },
+  { path: 'user', loadChildren: () => import('./user/user.module').then(m => m.UserModule) },
   { path: 'blog', loadChildren: () => import('./blog/blog.module').then(m => m.BlogModule) },
   { path: '**', component: NotFoundComponent }
 ];
