@@ -6,7 +6,6 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { SharedModule } from './shared/shared.module';
 import { CoreModule } from './core/core.module';
 import { ProductsModule } from './products/products.module';
-import { UserModule } from './user/user.module';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreModule } from '@ngrx/store';
 
@@ -21,6 +20,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { BrandsComponent } from './brands/brands.component';
 import { ContactsComponent } from './contacts/contacts.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
+
 import { reducers } from './+store';
 import { environment } from 'src/environments/environment';
 
@@ -45,7 +45,6 @@ import { environment } from 'src/environments/environment';
     SharedModule,
     CoreModule,
     ProductsModule,
-    UserModule,
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
