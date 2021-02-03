@@ -10,6 +10,7 @@ import { CategoriesComponent } from './categories/categories.component';
 
 import { ProductService } from './product.service';
 import { HttpClientModule } from '@angular/common/http';
+import { ProductsRoutingModule } from './products-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,15 +23,11 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     SharedModule,
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    ProductsRoutingModule
   ],
   providers: [
     ProductService
-  ],
-  exports: [
-    ProductComponent,
-    ProductsComponent,
-    ProductCardComponent
   ]
 })
 export class ProductsModule { }

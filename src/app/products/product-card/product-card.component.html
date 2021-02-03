@@ -1,6 +1,6 @@
 <div class="container">
     <div class="image-container">
-        <a [routerLink]="['/product/', product._id]">
+        <a [routerLink]="['/products/product/', product._id]">
             <img [src]="product.imageUrl" alt="product image">
         </a>
     </div>
@@ -10,7 +10,7 @@
             <span><i class="fas fa-ring"></i>{{product.ring}} ринг</span>
         </div>
         <div class="info">
-            <a [routerLink]="['/product/', product._id]">{{product.title}}</a>
+            <a [routerLink]="['/products/product/', product._id]">{{product.title}}</a>
             <p>{{product.price.toFixed(2)}} лв</p>
         </div>
     </div>
