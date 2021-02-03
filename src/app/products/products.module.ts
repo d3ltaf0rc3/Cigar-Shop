@@ -28,6 +28,9 @@ import { ProductsRoutingModule } from './products-routing.module';
   ],
   providers: [
     ProductService
+  ],
+  exports: [
+    ProductCardComponent
   ]
 })
 export class ProductsModule { }
