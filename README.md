@@ -52,8 +52,8 @@ You can try the app [here](https://cigar-shop.herokuapp.com)
 | /user/cart               | Cart page                                              |
 | /blog               | All blog posts                                         |
 | /blog/details/(id)  | Blog post page                                         |
-| /cigars?type=/type/ | Cigar pages containing different types of cigars       |
-| /product/(id)       | Product details page                                   |
+| /products/all?type=/type/ | Cigar pages containing different types of cigars       |
+| /products/product/(id)       | Product details page                                   |
 | /about-us           | About us page                                          |
 | /brands             | Page containing the logos of all brands                |
 | /contacts           | Contacts page                                          |
