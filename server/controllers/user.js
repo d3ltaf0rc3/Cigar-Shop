@@ -1,7 +1,7 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const { decodeCookie } = require("../utils/decode-cookie");
+const decodeCookie = require("../utils/decode-cookie");
 const { cookieOptions } = require("../config/environment");
 
 async function register(req, res) {

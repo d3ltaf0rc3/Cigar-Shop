@@ -1,6 +1,6 @@
 const Product = require("../models/product");
 const User = require("../models/user");
-const { decodeCookie } = require("../utils/decode-cookie");
+const decodeCookie = require("../utils/decode-cookie");
 
 async function createProduct(req, res) {
     try {
