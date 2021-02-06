@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-import { AuthenticationService } from './authentication.service';
 import { AuthGuard } from './auth.guard';
 
 @NgModule({
@@ -14,15 +14,13 @@ import { AuthGuard } from './auth.guard';
     LoginComponent,
     RegisterComponent
   ],
-  providers: [
-    AuthenticationService,
-    AuthGuard
-  ],
+  providers: [AuthGuard],
   imports: [
     CommonModule,
     SharedModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   exports: [
     LoginComponent,

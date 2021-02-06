@@ -4,7 +4,6 @@ import { RouterModule } from '@angular/router';
 
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
-import { AuthenticationModule } from '../authentication/authentication.module';
 
 @NgModule({
   declarations: [
@@ -14,7 +13,6 @@ import { AuthenticationModule } from '../authentication/authentication.module';
   imports: [
     CommonModule,
     RouterModule,
-    AuthenticationModule
   ],
   exports: [
     HeaderComponent,

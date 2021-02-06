@@ -16,10 +16,8 @@ export class RegisterComponent {
   registerHandler(value: { username: string; password: string; repeatPassword: string }): void {
     this.authService.register(value).pipe(
       catchError(err => {
-        if (!err.ok) {
-          this.error = err.error.message;
-          return throwError(err);
-        }
+        this.error = err.error.message;
+        return throwError(err);
       })
     ).subscribe(() => this.router.navigate(['/']));
   }

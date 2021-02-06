@@ -26,11 +26,7 @@ import { ProductsRoutingModule } from './products-routing.module';
     HttpClientModule,
     ProductsRoutingModule
   ],
-  providers: [
-    ProductService
-  ],
-  exports: [
-    ProductCardComponent
-  ]
+  providers: [ProductService],
+  exports: [ProductCardComponent]
 })
 export class ProductsModule { }

@@ -10,7 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BlogService } from './blog.service';
 
 @NgModule({
-  declarations: [AllComponent, DetailsComponent, ItemComponent],
+  declarations: [
+    AllComponent,
+    DetailsComponent,
+    ItemComponent
+  ],
   providers: [
     BlogService
   ],
@@ -18,8 +22,8 @@ import { BlogService } from './blog.service';
     CommonModule,
     HttpClientModule,
     BlogRoutingModule,
-    RouterModule,
-    SharedModule
+    SharedModule,
+    RouterModule
   ]
 })
 export class BlogModule { }

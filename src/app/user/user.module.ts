@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SharedModule } from '../shared/shared.module';
-import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ProductsModule } from '../products/products.module';
 
@@ -11,7 +10,6 @@ import { CartComponent } from './cart/cart.component';
 
 import { UserService } from './user.service';
 import { HttpClientModule } from '@angular/common/http';
-import { AuthenticationModule } from '../authentication/authentication.module';
 import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
@@ -24,14 +22,10 @@ import { UserRoutingModule } from './user-routing.module';
     CommonModule,
     HttpClientModule,
     SharedModule,
-    RouterModule,
     FormsModule,
     ProductsModule,
-    AuthenticationModule,
     UserRoutingModule
   ],
-  providers: [
-    UserService
-  ]
+  providers: [UserService]
 })
 export class UserModule { }

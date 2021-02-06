@@ -16,13 +16,9 @@ export class LoginComponent {
   loginHandler(value: { username: string; password: string }): void {
     this.authService.login(value).pipe(
       catchError(err => {
-        if (!err.ok) {
-          this.error = err.error.message;
-          return throwError(err);
-        }
+        this.error = err.error.message;
+        return throwError(err);
       })
-    ).subscribe(() => {
-      this.router.navigate(['/']);
-    });
+    ).subscribe(() => this.router.navigate(['/']));
   }
 }
