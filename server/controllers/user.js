@@ -15,7 +15,6 @@ async function register(req, res) {
 
                     const token = jwt.sign({
                         userID: userObject._id,
-                        username: userObject.username
                     }, process.env.JWT_KEY);
 
                     return res.cookie("auth-token", token, cookieOptions).send(user);
@@ -28,7 +27,7 @@ async function register(req, res) {
             });
         });
     } else {
-        return res.status(401).send({ message: "Двете пароли трябва да съвпадат!" });
+        return res.status(422).send({ message: "Двете пароли трябва да съвпадат!" });
     }
 }
 
@@ -39,7 +38,7 @@ async function login(req, res) {
         .populate("wishlist");
 
     if (user === null) {
-        return res.status(401).send({ message: "Грешно потребителско име или парола!" });
+        return res.status(404).send({ message: "Грешно потребителско име или парола!" });
     }
 
     const status = await bcrypt.compare(password, user.password);
@@ -47,7 +46,6 @@ async function login(req, res) {
     if (status) {
         const token = jwt.sign({
             userID: user._id,
-            username: user.username
         }, process.env.JWT_KEY);
 
         return res.cookie("auth-token", token, cookieOptions).send(user);
@@ -87,8 +85,8 @@ async function changePassword(req, res) {
 
 async function getCart(req, res) {
     try {
-        const user = await User.findById(req.userId).select("-password").populate("cart");
-        return res.send(user.cart);
+        const { cart } = await User.findById(req.userId).select("cart").populate("cart");
+        return res.send(cart);
     } catch (error) {
         return res.status(500).send(error.message);
     }
@@ -96,8 +94,8 @@ async function getCart(req, res) {
 
 async function getWishlist(req, res) {
     try {
-        const user = await User.findById(req.userId).populate("wishlist");
-        return res.send(user.wishlist);
+        const { wishlist } = await User.findById(req.userId).select("wishlist").populate("wishlist");
+        return res.send(wishlist);
     } catch (error) {
         return res.status(500).send(error.message);
     }
@@ -105,7 +103,7 @@ async function getWishlist(req, res) {
 
 async function getProfile(req, res) {
     try {
-        const user = await User.findById(req.userId).select("-password");
+        const user = await User.findById(req.userId);
         return res.send(user);
     } catch (error) {
         return res.status(500).send(error.message);
@@ -123,8 +121,7 @@ async function deleteProfile(req, res) {
 
 async function clearWishlist(req, res) {
     try {
-        const user = await User.findByIdAndUpdate(req.userId, { wishlist: [] }, { new: true })
-            .populate("cart");
+        const user = await User.findByIdAndUpdate(req.userId, { wishlist: [] }, { new: true }).populate("cart");
         return res.send(user);
     } catch (error) {
         return res.status(500).send(error.message);
