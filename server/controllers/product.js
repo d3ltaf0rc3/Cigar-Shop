@@ -1,10 +1,8 @@
 const Product = require("../models/product");
 const User = require("../models/user");
-const decodeCookie = require("../utils/decode-cookie");
 
 async function createProduct(req, res) {
     try {
-        decodeCookie(req.cookies["auth-token"]);
         const newProduct = new Product(req.body);
         const product = await newProduct.save();
         return res.send(product);
@@ -37,8 +35,7 @@ async function getProducts(req, res) {
 async function addToWishlist(req, res) {
     const { id } = req.body;
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findByIdAndUpdate(userID, { $addToSet: { wishlist: id } }, { new: true })
+        const user = await User.findByIdAndUpdate(req.userId, { $addToSet: { wishlist: id } }, { new: true })
             .populate("cart")
             .populate("wishlist");
         return res.send(user);
@@ -50,8 +47,7 @@ async function addToWishlist(req, res) {
 async function addToCart(req, res) {
     const { id } = req.body;
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findByIdAndUpdate(userID, { $addToSet: { cart: id } }, { new: true })
+        const user = await User.findByIdAndUpdate(req.userId, { $addToSet: { cart: id } }, { new: true })
             .populate("cart")
             .populate("wishlist");
         return res.send(user);
@@ -63,8 +59,7 @@ async function addToCart(req, res) {
 async function removeFromWishlist(req, res) {
     const { id } = req.body;
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findByIdAndUpdate(userID, { $pull: { wishlist: id } }, { new: true })
+        const user = await User.findByIdAndUpdate(req.userId, { $pull: { wishlist: id } }, { new: true })
             .populate("cart")
             .populate("wishlist");
         return res.send(user);
@@ -76,8 +71,7 @@ async function removeFromWishlist(req, res) {
 async function removeFromCart(req, res) {
     const { id } = req.body;
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findByIdAndUpdate(userID, { $pull: { cart: id } }, { new: true })
+        const user = await User.findByIdAndUpdate(req.userId, { $pull: { cart: id } }, { new: true })
             .populate("cart")
             .populate("wishlist");
         return res.send(user);

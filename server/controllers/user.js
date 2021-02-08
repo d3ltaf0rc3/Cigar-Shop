@@ -1,7 +1,6 @@
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const decodeCookie = require("../utils/decode-cookie");
 const { cookieOptions } = require("../config/environment");
 
 async function register(req, res) {
@@ -58,9 +57,6 @@ async function login(req, res) {
 }
 
 async function logout(req, res) {
-    if (!req.cookies["auth-token"]) {
-        return res.status(422).send({ message: "Auth cookie missing!" });
-    }
     return res.clearCookie("auth-token", cookieOptions).send({ message: "Logout is successful!" });
 }
 
@@ -69,15 +65,14 @@ async function changePassword(req, res) {
 
     if (newPassword === repeatNewPassword) {
         try {
-            const { userID } = decodeCookie(req.cookies["auth-token"]);
-            const currentUser = await User.findById(userID);
+            const currentUser = await User.findById(req.userId);
             const result = await bcrypt.compare(currentPassword, currentUser.password);
 
             if (result) {
                 const salt = bcrypt.genSaltSync(10);
                 const hash = bcrypt.hashSync(newPassword, salt);
 
-                const user = await User.findByIdAndUpdate(userID, { password: hash });
+                const user = await User.findByIdAndUpdate(req.userId, { password: hash });
                 return res.send(user);
             } else {
                 return res.status(401).send("Грешна парола!");
@@ -92,8 +87,7 @@ async function changePassword(req, res) {
 
 async function getCart(req, res) {
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findById(userID).select("-password").populate("cart");
+        const user = await User.findById(req.userId).select("-password").populate("cart");
         return res.send(user.cart);
     } catch (error) {
         return res.status(500).send(error.message);
@@ -102,8 +96,7 @@ async function getCart(req, res) {
 
 async function getWishlist(req, res) {
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findById(userID).select("-password").populate("wishlist");
+        const user = await User.findById(req.userId).populate("wishlist");
         return res.send(user.wishlist);
     } catch (error) {
         return res.status(500).send(error.message);
@@ -112,8 +105,7 @@ async function getWishlist(req, res) {
 
 async function getProfile(req, res) {
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findById(userID).select("-password");
+        const user = await User.findById(req.userId).select("-password");
         return res.send(user);
     } catch (error) {
         return res.status(500).send(error.message);
@@ -122,8 +114,7 @@ async function getProfile(req, res) {
 
 async function deleteProfile(req, res) {
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findByIdAndDelete(userID);
+        const user = await User.findByIdAndDelete(req.userId);
         return res.send(user);
     } catch (error) {
         return res.status(500).send(error.message);
@@ -132,8 +123,7 @@ async function deleteProfile(req, res) {
 
 async function clearWishlist(req, res) {
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findByIdAndUpdate(userID, { wishlist: [] }, { new: true })
+        const user = await User.findByIdAndUpdate(req.userId, { wishlist: [] }, { new: true })
             .populate("cart");
         return res.send(user);
     } catch (error) {
@@ -143,8 +133,7 @@ async function clearWishlist(req, res) {
 
 async function verifyUser(req, res) {
     try {
-        const { userID } = decodeCookie(req.cookies["auth-token"]);
-        const user = await User.findById(userID)
+        const user = await User.findById(req.userId)
             .populate("cart")
             .populate("wishlist");
         return res.send(user);
