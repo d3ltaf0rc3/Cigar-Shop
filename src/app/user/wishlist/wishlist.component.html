@@ -1,7 +1,4 @@
-<app-title-hero-section title="СПИСЪК С ЖЕЛАНИЯ"></app-title-hero-section>
-<app-lower-navbar></app-lower-navbar>
-<div class="container">
-    <hr>
+<app-wrapper title="СПИСЪК С ЖЕЛАНИЯ">
     <div class="inner-container">
         <app-loader *ngIf="!wishlistItems; else elseTemplate"></app-loader>
         <ng-template #elseTemplate>
@@ -17,4 +14,4 @@
         <button [disabled]="!wishlistItems?.length" (click)="clearWishlistHandler()">ИЗЧИСТИ СПИСЪКА С ЖЕЛАНИЯ</button>
         <a routerLink="/user/profile">КЪМ ПРОФИЛА</a>
     </div>
-</div>
+</app-wrapper>

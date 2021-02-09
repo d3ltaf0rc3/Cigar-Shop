@@ -1,7 +1,4 @@
-<app-title-hero-section [title]="title"></app-title-hero-section>
-<app-lower-navbar></app-lower-navbar>
-<div class="container">
-    <hr>
+<app-wrapper [title]="title">
     <div class="inner-container">
         <div class="categories">
             <app-categories></app-categories>
@@ -11,4 +8,4 @@
             <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
         </div>
     </div>
-</div>
+</app-wrapper>

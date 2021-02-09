@@ -6,13 +6,15 @@ import { LowerNavbarComponent } from './lower-navbar/lower-navbar.component';
 import { TitleHeroSectionComponent } from './title-hero-section/title-hero-section.component';
 import { LoaderComponent } from './loader/loader.component';
 import { ErrorBoxComponent } from './error-box/error-box.component';
+import { WrapperComponent } from './wrapper/wrapper.component';
 
 @NgModule({
   declarations: [
     LowerNavbarComponent,
     TitleHeroSectionComponent,
     LoaderComponent,
-    ErrorBoxComponent
+    ErrorBoxComponent,
+    WrapperComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { ErrorBoxComponent } from './error-box/error-box.component';
     LowerNavbarComponent,
     TitleHeroSectionComponent,
     LoaderComponent,
-    ErrorBoxComponent
+    ErrorBoxComponent,
+    WrapperComponent
   ]
 })
 export class SharedModule { }

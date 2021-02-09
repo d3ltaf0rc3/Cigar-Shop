@@ -1,7 +1,4 @@
-<app-title-hero-section title="ПРОФИЛ"></app-title-hero-section>
-<app-lower-navbar></app-lower-navbar>
-<div class="container">
-    <hr>
+<app-wrapper title="ПРОФИЛ">
     <div class="inner-container">
         <div class="heading">
             <app-loader *ngIf="!user; else elseTemplate"></app-loader>
@@ -43,4 +40,4 @@
             </div>
         </div>
     </div>
-</div>
+</app-wrapper>

@@ -1,7 +1,4 @@
-<app-title-hero-section [title]="product?.title"></app-title-hero-section>
-<app-lower-navbar></app-lower-navbar>
-<div class="container">
-    <hr>
+<app-wrapper [title]="product?.title">
     <app-loader *ngIf="!product; else elseContainer"></app-loader>
     <ng-template #elseContainer>
         <div class="product-info">
@@ -46,4 +43,4 @@
                 alt="right">
         </div>
     </ng-template>
-</div>
+</app-wrapper>
