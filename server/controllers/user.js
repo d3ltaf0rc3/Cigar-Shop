@@ -70,8 +70,8 @@ async function changePassword(req, res) {
                 const salt = bcrypt.genSaltSync(10);
                 const hash = bcrypt.hashSync(newPassword, salt);
 
-                const user = await User.findByIdAndUpdate(req.userId, { password: hash });
-                return res.send(user);
+                await User.findByIdAndUpdate(req.userId, { password: hash });
+                return res.send({ message: "Password successfully changed!" });
             } else {
                 return res.status(401).send("Грешна парола!");
             }

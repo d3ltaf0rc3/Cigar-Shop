@@ -28,10 +28,8 @@ export class ProfileComponent implements OnInit {
   changePasswordHandler(value: { currentPassword: string; newPassword: string; repeatNewPassword: string }): void {
     this.userService.changePassword(value).pipe(
       catchError(err => {
-        if (!err.ok) {
-          this.error = err.error;
-          return throwError(err);
-        }
+        this.error = err.error;
+        return throwError(err);
       })
     ).subscribe(() => {
       this.authService.logout().subscribe();
