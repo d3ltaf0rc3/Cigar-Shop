@@ -17,7 +17,7 @@ export class WishlistComponent implements OnInit {
     private authService: AuthenticationService) { }
 
   ngOnInit(): void {
-    this.userService.getWishlist().subscribe(wishlist => {
+    this.userService.getList('wishlist').subscribe(wishlist => {
       this.wishlistItems = wishlist;
     });
   }

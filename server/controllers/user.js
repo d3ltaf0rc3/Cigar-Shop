@@ -83,19 +83,10 @@ async function changePassword(req, res) {
     }
 }
 
-async function getCart(req, res) {
+async function getList(req, res) {
     try {
-        const { cart } = await User.findById(req.userId).select("cart").populate("cart");
-        return res.send(cart);
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-}
-
-async function getWishlist(req, res) {
-    try {
-        const { wishlist } = await User.findById(req.userId).select("wishlist").populate("wishlist");
-        return res.send(wishlist);
+        const list = await User.findById(req.userId).select(req.params.type).populate(req.params.type);
+        return res.send(list[req.params.type]);
     } catch (error) {
         return res.status(500).send(error.message);
     }
@@ -143,8 +134,7 @@ module.exports = {
     register,
     login,
     logout,
-    getCart,
-    getWishlist,
+    getList,
     getProfile,
     changePassword,
     deleteProfile,

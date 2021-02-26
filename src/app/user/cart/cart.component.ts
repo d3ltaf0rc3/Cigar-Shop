@@ -13,7 +13,7 @@ export class CartComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
-    this.userService.getCart().subscribe(cart => {
+    this.userService.getList('cart').subscribe(cart => {
       this.cartItems = cart;
       cart.forEach(item => this.totalPrice += item.price);
     });

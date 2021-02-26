@@ -13,12 +13,8 @@ export class UserService {
     return this.http.get<IUser>(`${environment.apiURL}/user/profile`, { withCredentials: true });
   }
 
-  getCart(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`${environment.apiURL}/user/cart`, { withCredentials: true });
-  }
-
-  getWishlist(): Observable<IProduct[]> {
-    return this.http.get<IProduct[]>(`${environment.apiURL}/user/wishlist`, { withCredentials: true });
+  getList(type: string): Observable<IProduct[]> {
+    return this.http.get<IProduct[]>(`${environment.apiURL}/user/list/${type}`, { withCredentials: true });
   }
 
   changePassword(data: { currentPassword: string; newPassword: string; repeatNewPassword: string }): Observable<IUser> {
