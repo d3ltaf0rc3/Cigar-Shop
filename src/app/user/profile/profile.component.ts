@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { IRootState } from 'src/app/+store';
 import { AuthenticationService } from 'src/app/authentication/authentication.service';
 import { IUser } from 'src/app/shared/interfaces/user';
 import { UserService } from '../user.service';
@@ -17,10 +19,11 @@ export class ProfileComponent implements OnInit {
   constructor(
     private userService: UserService,
     private authService: AuthenticationService,
-    private router: Router) { }
+    private router: Router,
+    private store: Store<IRootState>) { }
 
   ngOnInit(): void {
-    this.userService.getProfile().subscribe(user => {
+    this.store.select((state) => state.auth.user).subscribe(user => {
       this.user = user;
     });
   }

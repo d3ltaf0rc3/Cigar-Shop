@@ -92,15 +92,6 @@ async function getList(req, res) {
     }
 }
 
-async function getProfile(req, res) {
-    try {
-        const user = await User.findById(req.userId);
-        return res.send(user);
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-}
-
 async function deleteProfile(req, res) {
     try {
         const user = await User.findByIdAndDelete(req.userId);
@@ -135,7 +126,6 @@ module.exports = {
     login,
     logout,
     getList,
-    getProfile,
     changePassword,
     deleteProfile,
     clearWishlist,

@@ -9,10 +9,6 @@ import { IProduct } from '../shared/interfaces/product';
 export class UserService {
   constructor(private http: HttpClient) { }
 
-  getProfile(): Observable<IUser> {
-    return this.http.get<IUser>(`${environment.apiURL}/user/profile`, { withCredentials: true });
-  }
-
   getList(type: string): Observable<IProduct[]> {
     return this.http.get<IProduct[]>(`${environment.apiURL}/user/list/${type}`, { withCredentials: true });
   }
