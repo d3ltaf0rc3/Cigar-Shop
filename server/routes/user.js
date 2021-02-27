@@ -1,6 +1,15 @@
 const express = require("express");
 const router = express.Router();
-const { register, login, logout, changePassword, getList, deleteProfile, clearWishlist, verifyUser } = require("../controllers/user");
+const {
+    register,
+    login,
+    logout,
+    changePassword,
+    getList,
+    deleteProfile,
+    clearWishlist,
+    verifyUser
+} = require("../controllers/user");
 const auth = require("../utils/auth");
 
 router.post("/login", login);

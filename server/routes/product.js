@@ -1,6 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { createProduct, getProduct, getProducts, addToWishlist, addToCart, removeFromWishlist, removeFromCart } = require("../controllers/product");
+const {
+    createProduct,
+    getProduct,
+    getProducts,
+    addToWishlist,
+    addToCart,
+    removeFromWishlist,
+    removeFromCart
+} = require("../controllers/product");
 const auth = require("../utils/auth");
 
 router.post("/add", auth, createProduct);

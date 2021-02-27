@@ -22,7 +22,7 @@ async function getAll(req, res) {
 async function getBlogPost(req, res) {
     try {
         const blogId = req.params.id;
-        const blog = await Blog.findOne({ _id: blogId });
+        const blog = await Blog.findById(blogId);
 
         if (blog === null) {
             return res.status(404).send('Not found!');
