@@ -1,35 +1,64 @@
 const Blog = require("../models/Blog");
 
 async function createPost(req, res) {
+    const { title, imageUrl, content } = req.body;
+
     try {
-        const newPost = new Blog(req.body);
-        const post = await newPost.save();
-        return res.send(post);
+        const post = new Blog({
+            title,
+            imageUrl,
+            content
+        });
+        await post.save();
+
+        return res.status(201).send({
+            success: true,
+            data: post,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 
 async function getAll(req, res) {
     try {
         const posts = await Blog.find({});
-        return res.send(posts);
+        return res.send({
+            success: true,
+            data: posts,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 
 async function getBlogPost(req, res) {
+    const blogId = req.params.id;
+
     try {
-        const blogId = req.params.id;
         const blog = await Blog.findById(blogId);
 
         if (blog === null) {
-            return res.status(404).send('Not found!');
+            return res.status(404).send({
+                success: false,
+                data: 'Not found!'
+            });
         }
-        return res.send(blog);
+        return res.send({
+            success: true,
+            data: blog,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 

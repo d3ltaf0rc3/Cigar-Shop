@@ -6,6 +6,9 @@ module.exports = (req, res, next) => {
         req.userId = decoded.userID;
         next();
     } catch (error) {
-        return res.status(401).send("Unauthenticated!");
+        return res.status(401).send({
+            success: false,
+            data: "Invalid or missing session"
+        });
     }
 };

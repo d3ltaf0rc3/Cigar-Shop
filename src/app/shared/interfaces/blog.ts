@@ -1,6 +1,5 @@
-import { IBase } from './base';
-
-export interface IBlog extends IBase {
+export interface IBlog {
+    _id: string;
     title: string;
     imageUrl: string;
     content: string;

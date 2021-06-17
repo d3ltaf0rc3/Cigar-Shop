@@ -1,6 +1,5 @@
-import { IBase } from './base';
-
-export interface IProduct extends IBase {
+export interface IProduct {
+    _id: string;
     title: string;
     type: string;
     imageUrl: string;

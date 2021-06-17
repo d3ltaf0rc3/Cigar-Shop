@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IBlog } from 'src/app/shared/interfaces/blog';
 import { BlogService } from '../blog.service';
 
@@ -9,11 +12,18 @@ import { BlogService } from '../blog.service';
 })
 export class AllComponent implements OnInit {
   posts: IBlog[];
-  constructor(private blogService: BlogService) { }
+  constructor(private blogService: BlogService, private router: Router) { }
 
   ngOnInit(): void {
-    this.blogService.getAll().subscribe(posts => {
-      this.posts = posts;
+    this.blogService.getAll()
+    .pipe(
+      catchError(() => {
+        this.router.navigate(['not-found']);
+        return throwError(() => new Error('Something went wrong! Try again later.'));
+      })
+    )
+    .subscribe(resp => {
+      this.posts = resp.data;
     });
   }
 }
