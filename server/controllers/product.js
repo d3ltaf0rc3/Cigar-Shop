@@ -3,11 +3,17 @@ const User = require("../models/user");
 
 async function createProduct(req, res) {
     try {
-        const newProduct = new Product(req.body);
-        const product = await newProduct.save();
-        return res.send(product);
+        const product = new Product(req.body);
+        await product.save();
+        return res.status(201).send({
+            success: true,
+            data: product,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 
@@ -17,11 +23,20 @@ async function getProduct(req, res) {
         const product = await Product.findById(productId);
 
         if (product === null) {
-            return res.status(404).send("Not found!");
+            return res.status(404).send({
+                success: false,
+                data: "Not found!",
+            });
         }
-        return res.send(product);
+        return res.send({
+            success: true,
+            data: product,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 
@@ -29,9 +44,22 @@ async function getProducts(req, res) {
     const { type } = req.params;
     try {
         const products = await Product.find({ type });
-        return res.send(products);
+
+        if (products === null) {
+            return res.status(404).send({
+                success: false,
+                data: 'Not found!',
+            })
+        }
+        return res.send({
+            success: true,
+            data: products,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 
@@ -39,11 +67,18 @@ async function addToWishlist(req, res) {
     const { id } = req.body;
     try {
         const user = await User.findByIdAndUpdate(req.userId, { $addToSet: { wishlist: id } }, { new: true })
+            .select('-password')
             .populate("cart")
             .populate("wishlist");
-        return res.send(user);
+        return res.send({
+            success: true,
+            data: user,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 
@@ -51,35 +86,56 @@ async function addToCart(req, res) {
     const { id } = req.body;
     try {
         const user = await User.findByIdAndUpdate(req.userId, { $addToSet: { cart: id } }, { new: true })
+            .select('-password')
             .populate("cart")
             .populate("wishlist");
-        return res.send(user);
+        return res.send({
+            success: true,
+            data: user,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 
 async function removeFromWishlist(req, res) {
-    const { id } = req.body;
+    const { id } = req.params;
     try {
         const user = await User.findByIdAndUpdate(req.userId, { $pull: { wishlist: id } }, { new: true })
+            .select('-password')
             .populate("cart")
             .populate("wishlist");
-        return res.send(user);
+        return res.send({
+            success: true,
+            data: user,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 
 async function removeFromCart(req, res) {
-    const { id } = req.body;
+    const { id } = req.params;
     try {
         const user = await User.findByIdAndUpdate(req.userId, { $pull: { cart: id } }, { new: true })
+            .select('-password')
             .populate("cart")
             .populate("wishlist");
-        return res.send(user);
+        return res.send({
+            success: true,
+            data: user,
+        });
     } catch (error) {
-        return res.status(500).send(error.message);
+        return res.status(500).send({
+            success: false,
+            data: error.message,
+        });
     }
 }
 

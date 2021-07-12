@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { switchMap, tap } from 'rxjs';
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { ProductService } from '../product.service';
 
@@ -14,18 +15,22 @@ export class ProductsComponent implements OnInit {
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.products = null;
-      switch (params.type) {
-        case 'habanos': this.title = 'HABANOS ПУРИ'; break;
-        case 'others': this.title = 'ДРУГИ ПУРИ'; break;
-        case 'accessories': this.title = 'АКСЕСОАРИ'; break;
-        case 'gourmet': this.title = 'ГУРМЕ'; break;
-        case 'special': this.title = 'СПЕЦИАЛНИ ОФЕРТИ'; break;
-      }
-      this.productService.getAllProducts(params.type).subscribe(products => {
-        this.products = products;
+    this.route.queryParams
+      .pipe(
+        tap((params) => {
+          this.products = null;
+          switch (params.type) {
+            case 'habanos': this.title = 'HABANOS ПУРИ'; break;
+            case 'others': this.title = 'ДРУГИ ПУРИ'; break;
+            case 'accessories': this.title = 'АКСЕСОАРИ'; break;
+            case 'gourmet': this.title = 'ГУРМЕ'; break;
+            case 'special': this.title = 'СПЕЦИАЛНИ ОФЕРТИ'; break;
+          }
+        }),
+        switchMap((params) => this.productService.getAllProducts(params.type))
+      )
+      .subscribe(res => {
+        this.products = res.data;
       });
-    });
   }
 }

@@ -4,6 +4,7 @@ import { AuthenticationService } from 'src/app/authentication/authentication.ser
 import { IProduct } from 'src/app/shared/interfaces/product';
 import { ProductService } from '../product.service';
 import { tap } from 'rxjs/operators';
+import { IBase } from 'src/app/shared/interfaces/base';
 import { IUser } from 'src/app/shared/interfaces/user';
 
 @Component({
@@ -33,32 +34,32 @@ export class ProductComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.productService.getProduct(this.route.snapshot.paramMap.get('id')).subscribe(product => {
-      this.product = product;
+    this.productService.getProduct(this.route.snapshot.paramMap.get('id')).subscribe(res => {
+      this.product = res.data;
     });
   }
 
   addToCartHandler(): void {
     this.productService.addToCart(this.product._id).pipe(
-      tap((user: IUser) => this.authService.updateUser(user))
+      tap((res: IBase<IUser>) => this.authService.updateUser(res.data))
     ).subscribe();
   }
 
   addToWishlistHandler(): void {
     this.productService.addToWishlist(this.product._id).pipe(
-      tap((user: IUser) => this.authService.updateUser(user))
+      tap((res: IBase<IUser>) => this.authService.updateUser(res.data))
     ).subscribe();
   }
 
   removeFromCartHandler(): void {
     this.productService.removeFromCart(this.product._id).pipe(
-      tap((user: IUser) => this.authService.updateUser(user))
+      tap((res: IBase<IUser>) => this.authService.updateUser(res.data))
     ).subscribe();
   }
 
   removeFromWishlistHandler(): void {
     this.productService.removeFromWishlist(this.product._id).pipe(
-      tap((user: IUser) => this.authService.updateUser(user))
+      tap((res: IBase<IUser>) => this.authService.updateUser(res.data))
     ).subscribe();
   }
 }

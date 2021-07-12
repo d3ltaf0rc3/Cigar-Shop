@@ -14,9 +14,9 @@ const auth = require("../utils/auth");
 router.post("/add", auth, createProduct);
 router.get("/get/:id", getProduct);
 router.get("/get-all/:type", getProducts);
-router.post("/wishlist/add", auth, addToWishlist);
-router.post("/cart/add", auth, addToCart);
-router.post("/wishlist/remove", auth, removeFromWishlist);
-router.post("/cart/remove", auth, removeFromCart);
+router.put("/wishlist/add", auth, addToWishlist);
+router.put("/cart/add", auth, addToCart);
+router.delete("/wishlist/remove/:id", auth, removeFromWishlist);
+router.delete("/cart/remove/:id", auth, removeFromCart);
 
 module.exports = router;
