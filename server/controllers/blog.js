@@ -47,7 +47,7 @@ async function getBlogPost(req, res) {
         if (blog === null) {
             return res.status(404).send({
                 success: false,
-                data: 'Not found!'
+                data: "Статията не е намерена!"
             });
         }
         return res.send({

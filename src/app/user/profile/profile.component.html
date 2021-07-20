@@ -13,23 +13,26 @@
                 <hr>
                 <app-error-box *ngIf="error" [message]="error"></app-error-box>
                 <app-error-box
-                    *ngIf="(currentPassword.touched && newPassword.touched && repeatNewPassword.touched) && (currentPassword.errors?.required || newPassword.errors?.required || repeatNewPassword.errors?.required)"
+                    *ngIf="(currentPassword.touched && password.touched && repeatPassword.touched) && (currentPassword.errors?.required || password.errors?.required || repeatPassword.errors?.required)"
                     message="Всички полета са задължителни!"></app-error-box>
                 <app-error-box
-                    *ngIf="currentPassword.errors?.minlength || newPassword.errors?.minlength || repeatNewPassword.errors?.minlength"
-                    message="Паролата трябва да има дължина от поне 6 символа!"></app-error-box>
+                    *ngIf="currentPassword.errors?.minlength || password.errors?.minlength || repeatPassword.errors?.minlength"
+                    message="Паролата трябва да има дължина от поне 8 символа!"></app-error-box>
                 <app-error-box
-                    *ngIf="newPassword.touched && repeatNewPassword.touched && newPassword.value !== repeatNewPassword.value"
+                    *ngIf="currentPassword.errors?.maxlength || password.errors?.maxlength || repeatPassword.errors?.maxlength"
+                    message="Паролата не трябва да е по-дълга от 18 символа!"></app-error-box>
+                <app-error-box
+                    *ngIf="password.touched && repeatPassword.touched && password.value !== repeatPassword.value"
                     message="И двете пароли трябва да съвпадат!">
                 </app-error-box>
                 <form #f="ngForm" (ngSubmit)="changePasswordHandler(f.value)">
                     <input #currentPassword="ngModel" name="currentPassword" type="password" placeholder="Текуща парола"
-                        ngModel required minlength="6">
-                    <input #newPassword="ngModel" name="newPassword" type="password" placeholder="Нова парола" ngModel
-                        required minlength="6">
-                    <input #repeatNewPassword="ngModel" name="repeatNewPassword" type="password"
-                        placeholder="Повторете новата парола" ngModel required minlength="6">
-                    <button [disabled]="f.invalid || newPassword.value !== repeatNewPassword.value">Промяна на
+                        ngModel required minlength="8" maxlength="18">
+                    <input #password="ngModel" name="password" type="password" placeholder="Нова парола" ngModel
+                        required minlength="8" maxlength="18">
+                    <input #repeatPassword="ngModel" name="repeatPassword" type="password"
+                        placeholder="Повторете новата парола" ngModel required minlength="8" maxlength="18">
+                    <button [disabled]="f.invalid || password.value !== repeatPassword.value">Промяна на
                         парола</button>
                 </form>
             </div>

@@ -13,7 +13,6 @@ app.use("/api", userRouter);
 app.use("/api/product", productRouter);
 app.use("/api/blog", blogRouter);
 
-app.listen(process.env.PORT, err => {
-    if (err) throw err;
+app.listen(process.env.PORT, () => {
     console.log(`Server is running on port ${process.env.PORT}`);
 });

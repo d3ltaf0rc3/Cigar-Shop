@@ -5,6 +5,7 @@ async function createProduct(req, res) {
     try {
         const product = new Product(req.body);
         await product.save();
+
         return res.status(201).send({
             success: true,
             data: product,
@@ -18,14 +19,15 @@ async function createProduct(req, res) {
 }
 
 async function getProduct(req, res) {
+    const productId = req.params.id;
+
     try {
-        const productId = req.params.id;
         const product = await Product.findById(productId);
 
         if (product === null) {
             return res.status(404).send({
                 success: false,
-                data: "Not found!",
+                data: "Продуктът не е намерен",
             });
         }
         return res.send({
@@ -48,7 +50,7 @@ async function getProducts(req, res) {
         if (products === null) {
             return res.status(404).send({
                 success: false,
-                data: 'Not found!',
+                data: "Категорията продукти не е намерена!",
             })
         }
         return res.send({
@@ -67,7 +69,7 @@ async function addToWishlist(req, res) {
     const { id } = req.body;
     try {
         const user = await User.findByIdAndUpdate(req.userId, { $addToSet: { wishlist: id } }, { new: true })
-            .select('-password')
+            .select("-password")
             .populate("cart")
             .populate("wishlist");
         return res.send({
@@ -86,7 +88,7 @@ async function addToCart(req, res) {
     const { id } = req.body;
     try {
         const user = await User.findByIdAndUpdate(req.userId, { $addToSet: { cart: id } }, { new: true })
-            .select('-password')
+            .select("-password")
             .populate("cart")
             .populate("wishlist");
         return res.send({
@@ -105,7 +107,7 @@ async function removeFromWishlist(req, res) {
     const { id } = req.params;
     try {
         const user = await User.findByIdAndUpdate(req.userId, { $pull: { wishlist: id } }, { new: true })
-            .select('-password')
+            .select("-password")
             .populate("cart")
             .populate("wishlist");
         return res.send({
@@ -124,7 +126,7 @@ async function removeFromCart(req, res) {
     const { id } = req.params;
     try {
         const user = await User.findByIdAndUpdate(req.userId, { $pull: { cart: id } }, { new: true })
-            .select('-password')
+            .select("-password")
             .populate("cart")
             .populate("wishlist");
         return res.send({

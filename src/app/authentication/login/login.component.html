@@ -10,14 +10,19 @@
     </app-error-box>
     <app-error-box *ngIf="username.touched && username.errors?.minlength"
         message="Потребителското име трябва да бъде поне 4 символа!"></app-error-box>
+    <app-error-box *ngIf="username.touched && username.errors?.maxlength"
+        message="Потребителското име не трябва да бъде повече от 18 символа!"></app-error-box>
     <app-error-box *ngIf="username.touched && username.errors?.pattern"
         message="Потребителското име може да съдържа само букви, цифри, долни черти и точки!"></app-error-box>
     <app-error-box *ngIf="password.touched && password.errors?.minlength"
-        message="Паролата трябва да бъде поне 6 символа!"></app-error-box>
+        message="Паролата трябва да бъде поне 8 символа!"></app-error-box>
+    <app-error-box *ngIf="password.touched && password.errors?.maxlength"
+        message="Паролата не трябва да бъде повече от 18 символа!"></app-error-box>
     <form #f="ngForm" (ngSubmit)="loginHandler(f.value)">
         <input #username="ngModel" name="username" type="text" placeholder="Потребителско име" ngModel required
-            minlength="4" pattern="^[\w\d\.]+$">
-        <input #password="ngModel" name="password" type="password" placeholder="Парола" ngModel required minlength="6">
+            minlength="4" pattern="^[\w\d\.]+$" maxlength="18">
+        <input #password="ngModel" name="password" type="password" placeholder="Парола" ngModel required minlength="8"
+            maxlength="18">
         <button [disabled]="f.invalid">ВЛЕЗ</button>
     </form>
     <span>Нямате регистриран профил? <a routerLink="/register">Регистрирайте се от тук.</a></span>
