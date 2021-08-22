@@ -1,91 +1,102 @@
 $light-grey: #e8e6e3;
+$gold: #bba466;
 
 header {
-    background-color: #000000;
-    border-top: 2px solid rgb(123, 105, 53);
+  background-color: #000000;
+  border-top: 2px solid rgb(123, 105, 53);
 }
 
 ul,
 .upper-header,
 .lower-header {
-    display: flex;
-    justify-content: space-between;
-}
-
-button {
-    background: transparent;
-    outline: 0;
-    border: 0;
-    cursor: pointer;
-}
-
-a,button {
-    color: $light-grey;
-    font-size: 12px;
-    font-family: Tahoma, Verdana, sans-serif;
-    &:hover {
-        color: #bba466;
-    }
+  display: flex;
 }
 
 .upper-header,
 .lower-header {
-    align-items: center;
-    padding: 0 310px;
+  justify-content: space-between;
+}
+
+button {
+  background: transparent;
+  border: 0;
+}
+
+a,
+button {
+  color: $light-grey;
+  font-size: 12px;
+  font-family: Tahoma, Verdana, sans-serif;
+  transition: color ease-in-out 0.2s;
+  &:hover {
+    color: $gold;
+  }
+}
+
+.upper-header,
+.lower-header {
+  align-items: center;
+  padding: 0 15%;
+  ul:nth-child(2) {
+    justify-content: flex-end;
+  }
 }
 
 .upper-header {
-    height: 48px;
-    border-bottom: 1px solid rgb(123, 114, 101);
-    ul:first-child {
-        width: 300px;
-    }
+  height: 48px;
+  border-bottom: 1px solid rgb(123, 114, 101);
+  ul {
+    width: 400px;
+  }
 
-    ul:nth-child(2) {
-        width: 180px;
-    }
+  ul li:not(:last-child) {
+    margin-right: 20px;
+  }
 
-    i {
-        margin-right: 5px;
-    }
+  i {
+    margin-right: 5px;
+  }
 }
 
 .img-container img {
-    background-color: #000000;
-    padding: 0 30px;
-    position: absolute;
-    top: 7px;
-    left: 39%;
-    z-index: 2;
+  background-color: #000000;
+  padding: 0 30px;
+  position: absolute;
+  top: 7px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  z-index: 2;
 }
 
 .lower-header {
-    height: 55px;
-    i {
-        font-size: 18px;
-        margin-right: 20px;
+  height: 55px;
+  i {
+    font-size: 18px;
+    margin-right: 20px;
+  }
+  .hashtag {
+    font-weight: bold;
+    &:hover {
+      text-decoration: underline;
+      color: $light-grey;
     }
-    .hashtag {
-        font-weight: bold;
-        &:hover {
-            text-decoration: underline;
-            color: $light-grey;
-        }
+  }
+  ul:nth-child(2) {
+    li {
+      a {
+        display: flex;
+        align-items: center;
+      }
+      img {
+        margin-right: 10px;
+      }
     }
-    ul:nth-child(2) {
-        li {
-            a {
-                display: flex;
-                align-items: center;
-            }
-            img {
-                margin-right: 10px;
-            }
-        }
-    }
+  }
 }
 
-.logged-list {
-    width: 420px !important;
-    justify-content: space-between;
+@media screen and (max-width: 1440px) {
+  .upper-header,
+  .lower-header {
+    padding: 0 10%;
+  }
 }
