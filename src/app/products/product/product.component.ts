@@ -15,6 +15,12 @@ import { IUser } from 'src/app/shared/interfaces/user';
 export class ProductComponent implements OnInit {
   product: IProduct;
 
+  constructor(
+    private productService: ProductService,
+    private authService: AuthenticationService,
+    private route: ActivatedRoute) {
+  }
+
   get isLogged(): boolean {
     return !!this.authService.user;
   }
@@ -25,12 +31,6 @@ export class ProductComponent implements OnInit {
 
   get isInWishlist(): boolean {
     return !!this.authService.user.wishlist.find((el: IProduct) => el._id === this.product._id);
-  }
-
-  constructor(
-    private productService: ProductService,
-    private authService: AuthenticationService,
-    private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
