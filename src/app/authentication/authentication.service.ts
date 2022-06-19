@@ -13,13 +13,15 @@ import { setUser, clearUser } from '../+store/actions';
   providedIn: 'root'
 })
 export class AuthenticationService {
-  httpOptions = {
+  user: IUser;
+
+  private httpOptions = {
     headers: new HttpHeaders({
-      'content-type': 'application/json'
+      // eslint-disable-next-line @typescript-eslint/naming-convention
+      'Content-Type': 'application/json'
     }),
     withCredentials: true
   };
-  user: IUser;
 
   constructor(private http: HttpClient, private store: Store<IRootState>) {
     this.http.get(`${environment.apiURL}/user/verify`, { withCredentials: true }).pipe(
